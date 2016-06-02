@@ -12,19 +12,19 @@ class Router {
     
     static let sharedInstance = Router()
     var navigationController: UINavigationController?
-//    
-//    init(navigationController: UINavigationController) {
-//        self.navigationController = navigationController
-//    }
     
     func showCarsList() {
-        data(carsCallback: { cars in
+        let loadingView = LoadingView()
+        navigationController?.pushViewController(loadingView, animated: true)
+        data(2, carsCallback: { cars in
             let carsListController = CarsListController(cars: cars)
             carsListController.carTouched = {
                 car in
                 self.showCarDetails(car)
             }
-            self.navigationController?.pushViewController(carsListController, animated: true)
+//            self.navigationController?.pushViewController(carsListController, animated: true)
+            
+            loadingView.addChildView(carsListController)
         })
     }
 
@@ -57,7 +57,8 @@ class Router {
     }
     
     func startApp() {
-        showRandomCarDetails()
+//        showRandomCarDetails()
+        showCarsList()
     }
         
 }

@@ -22,6 +22,7 @@
 		13C83C6D1D005F7500E2C80F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C83C6C1D005F7500E2C80F /* Router.swift */; };
 		13C83C6F1D0063BD00E2C80F /* DoubleLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C83C6E1D0063BD00E2C80F /* DoubleLabelView.swift */; };
 		13C83C711D0066A000E2C80F /* CarDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C83C701D0066A000E2C80F /* CarDetailsController.swift */; };
+		13C83C731D007ACE00E2C80F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C83C721D007ACE00E2C80F /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		13C83C6C1D005F7500E2C80F /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		13C83C6E1D0063BD00E2C80F /* DoubleLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleLabelView.swift; sourceTree = "<group>"; };
 		13C83C701D0066A000E2C80F /* CarDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarDetailsController.swift; sourceTree = "<group>"; };
+		13C83C721D007ACE00E2C80F /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 			children = (
 				13C83C661D005B2C00E2C80F /* ListView.swift */,
 				13C83C6E1D0063BD00E2C80F /* DoubleLabelView.swift */,
+				13C83C721D007ACE00E2C80F /* LoadingView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				13C83C691D005C3E00E2C80F /* CarsListController.swift in Sources */,
 				13C83C6B1D005CEE00E2C80F /* Tools.swift in Sources */,
 				13C83C4A1D002F4000E2C80F /* AppDelegate.swift in Sources */,
+				13C83C731D007ACE00E2C80F /* LoadingView.swift in Sources */,
 				13C83C5D1D002F9000E2C80F /* Car.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -33,7 +33,8 @@ final class DoubleLabelView: UIStackView {
         super.init(frame: .zero)
         addArrangedSubview(label1)
         addArrangedSubview(label2)
-        backgroundColor = .whiteColor()
+        label1.backgroundColor = .whiteColor()
+        label2.backgroundColor = .whiteColor()
     }
     
     required init?(coder aDecoder: NSCoder) {
