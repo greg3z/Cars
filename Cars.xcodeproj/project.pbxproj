@@ -21,6 +21,7 @@
 		13C83C6B1D005CEE00E2C80F /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C83C6A1D005CEE00E2C80F /* Tools.swift */; };
 		13C83C6D1D005F7500E2C80F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C83C6C1D005F7500E2C80F /* Router.swift */; };
 		13C83C6F1D0063BD00E2C80F /* DoubleLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C83C6E1D0063BD00E2C80F /* DoubleLabelView.swift */; };
+		13C83C711D0066A000E2C80F /* CarDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C83C701D0066A000E2C80F /* CarDetailsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		13C83C6A1D005CEE00E2C80F /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tools.swift; path = Cars/Tools.swift; sourceTree = "<group>"; };
 		13C83C6C1D005F7500E2C80F /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		13C83C6E1D0063BD00E2C80F /* DoubleLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleLabelView.swift; sourceTree = "<group>"; };
+		13C83C701D0066A000E2C80F /* CarDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarDetailsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				13C83C681D005C3E00E2C80F /* CarsListController.swift */,
+				13C83C701D0066A000E2C80F /* CarDetailsController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13C83C611D00301500E2C80F /* Driver.swift in Sources */,
+				13C83C711D0066A000E2C80F /* CarDetailsController.swift in Sources */,
 				13C83C631D00311300E2C80F /* Data.swift in Sources */,
 				13C83C6F1D0063BD00E2C80F /* DoubleLabelView.swift in Sources */,
 				13C83C6D1D005F7500E2C80F /* Router.swift in Sources */,

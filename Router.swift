@@ -20,12 +20,24 @@ class Router {
     func showCarsList() {
         data(carsCallback: { cars in
             let carsListController = CarsListController(cars: cars)
+            carsListController.carTouched = {
+                car in
+                self.showCarDetails(car)
+            }
             self.navigationController?.pushViewController(carsListController, animated: true)
         })
     }
 
     func showCarDetails(car: Car) {
-        
+        let carDetailsController = CarDetailsController(car: car)
+        navigationController?.pushViewController(carDetailsController, animated: true)
+    }
+    
+    func showRandomCarDetails() {
+        data(carsCallback: { cars in
+            let car = cars[0]
+            self.showCarDetails(car)
+        })
     }
 
     func showCarDetails(carId: String) {
@@ -42,6 +54,10 @@ class Router {
 
     func showEditCar(carId: String) {
         
+    }
+    
+    func startApp() {
+        showRandomCarDetails()
     }
         
 }

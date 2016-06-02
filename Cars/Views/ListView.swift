@@ -10,9 +10,10 @@ import UIKit
 
 final class ListView<T>: UITableViewController {
     
+    let cellId = "cellId"
     var elements: [T]
     var configureCell: ((T, UITableViewCell) -> Void)?
-    let cellId = "cellId"
+    var elementTouched: (T -> Void)?
     
     init(elements: [T], style: UITableViewStyle = .Plain) {
         self.elements = elements
@@ -33,6 +34,11 @@ final class ListView<T>: UITableViewController {
         let element = elements[indexPath.row]
         configureCell?(element, cell)
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let element = elements[indexPath.row]
+        elementTouched?(element)
     }
     
 }

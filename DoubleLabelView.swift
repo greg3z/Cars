@@ -29,10 +29,11 @@ final class DoubleLabelView: UIStackView {
         }
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init() {
+        super.init(frame: .zero)
         addArrangedSubview(label1)
         addArrangedSubview(label2)
+        backgroundColor = .whiteColor()
     }
     
     required init?(coder aDecoder: NSCoder) {

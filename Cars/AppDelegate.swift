@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Router.sharedInstance.navigationController = navigationController
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-        Router.sharedInstance.showCarsList()
+        Router.sharedInstance.startApp()
         return true
     }
 

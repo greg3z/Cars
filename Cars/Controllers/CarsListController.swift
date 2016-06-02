@@ -11,6 +11,7 @@ import UIKit
 final class CarsListController: UIViewController {
     
     var cars: [Car]
+    var carTouched: (Car -> Void)?
     
     init(cars: [Car]) {
         self.cars = cars
@@ -28,6 +29,7 @@ final class CarsListController: UIViewController {
             car, cell in
             cell.textLabel?.text = car.model
         }
+        carsListView.elementTouched = carTouched
         addChildView(carsListView)
     }
     
