@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		130BA8671D009AAF003794C5 /* FieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130BA8661D009AAF003794C5 /* FieldView.swift */; };
+		130BA8691D009D1B003794C5 /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130BA8681D009D1B003794C5 /* FormView.swift */; };
+		130BA86B1D00A463003794C5 /* CarFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130BA86A1D00A463003794C5 /* CarFormController.swift */; };
 		13C83C4A1D002F4000E2C80F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C83C491D002F4000E2C80F /* AppDelegate.swift */; };
 		13C83C4C1D002F4000E2C80F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C83C4B1D002F4000E2C80F /* ViewController.swift */; };
 		13C83C4F1D002F4000E2C80F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13C83C4D1D002F4000E2C80F /* Main.storyboard */; };
@@ -26,6 +29,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		130BA8661D009AAF003794C5 /* FieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldView.swift; sourceTree = "<group>"; };
+		130BA8681D009D1B003794C5 /* FormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
+		130BA86A1D00A463003794C5 /* CarFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarFormController.swift; sourceTree = "<group>"; };
 		13C83C461D002F4000E2C80F /* Cars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13C83C491D002F4000E2C80F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13C83C4B1D002F4000E2C80F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +115,8 @@
 				13C83C661D005B2C00E2C80F /* ListView.swift */,
 				13C83C6E1D0063BD00E2C80F /* DoubleLabelView.swift */,
 				13C83C721D007ACE00E2C80F /* LoadingView.swift */,
+				130BA8661D009AAF003794C5 /* FieldView.swift */,
+				130BA8681D009D1B003794C5 /* FormView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -118,6 +126,7 @@
 			children = (
 				13C83C681D005C3E00E2C80F /* CarsListController.swift */,
 				13C83C701D0066A000E2C80F /* CarDetailsController.swift */,
+				130BA86A1D00A463003794C5 /* CarFormController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -193,6 +202,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				130BA86B1D00A463003794C5 /* CarFormController.swift in Sources */,
 				13C83C611D00301500E2C80F /* Driver.swift in Sources */,
 				13C83C711D0066A000E2C80F /* CarDetailsController.swift in Sources */,
 				13C83C631D00311300E2C80F /* Data.swift in Sources */,
@@ -205,7 +215,9 @@
 				13C83C6B1D005CEE00E2C80F /* Tools.swift in Sources */,
 				13C83C4A1D002F4000E2C80F /* AppDelegate.swift in Sources */,
 				13C83C731D007ACE00E2C80F /* LoadingView.swift in Sources */,
+				130BA8691D009D1B003794C5 /* FormView.swift in Sources */,
 				13C83C5D1D002F9000E2C80F /* Car.swift in Sources */,
+				130BA8671D009AAF003794C5 /* FieldView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

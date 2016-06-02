@@ -15,22 +15,26 @@ class Router {
     
     func showCarsList() {
         let loadingView = LoadingView()
-        navigationController?.pushViewController(loadingView, animated: true)
+        showNext(loadingView)
         data(2, carsCallback: { cars in
             let carsListController = CarsListController(cars: cars)
             carsListController.carTouched = {
                 car in
                 self.showCarDetails(car)
             }
-//            self.navigationController?.pushViewController(carsListController, animated: true)
-            
             loadingView.addChildView(carsListController)
         })
+        loadingView.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add") {
+            self.showAddCar()
+        }
     }
 
     func showCarDetails(car: Car) {
         let carDetailsController = CarDetailsController(car: car)
-        navigationController?.pushViewController(carDetailsController, animated: true)
+        carDetailsController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit") {
+            self.showEditCar(car)
+        }
+        showNext(carDetailsController)
     }
     
     func showRandomCarDetails() {
@@ -45,11 +49,13 @@ class Router {
     }
 
     func showAddCar() {
-        
+        let carFormController = CarFormController(car: nil)
+        showNext(carFormController)
     }
 
     func showEditCar(car: Car) {
-        
+        let carFormController = CarFormController(car: car)
+        showNext(carFormController)
     }
 
     func showEditCar(carId: String) {
@@ -59,6 +65,11 @@ class Router {
     func startApp() {
 //        showRandomCarDetails()
         showCarsList()
+//        showAddCar()
+    }
+    
+    func showNext(viewController: UIViewController) {
+        navigationController?.pushViewController(viewController, animated: true)
     }
         
 }
