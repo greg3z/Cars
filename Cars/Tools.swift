@@ -16,4 +16,9 @@ extension UIViewController {
         addChildViewController(viewController)
     }
     
+    func addChildView(childView: UIView, frame: CGRect? = nil) {
+        childView.frame = frame ?? view.bounds
+        view.addSubview(childView)
+    }
+    
 }
