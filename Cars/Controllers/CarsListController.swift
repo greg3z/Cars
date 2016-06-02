@@ -24,6 +24,10 @@ final class CarsListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let carsListView = ListView(elements: cars)
+        carsListView.configureCell = {
+            car, cell in
+            cell.textLabel?.text = car.model
+        }
         addChildView(carsListView)
     }
     

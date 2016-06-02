@@ -12,10 +12,16 @@ final class ListView<T>: UITableViewController {
     
     var elements: [T]
     var configureCell: ((T, UITableViewCell) -> Void)?
+    let cellId = "cellId"
     
     init(elements: [T], style: UITableViewStyle = .Plain) {
         self.elements = elements
         super.init(style: style)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellId)
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -23,7 +29,7 @@ final class ListView<T>: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cellId", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath)
         let element = elements[indexPath.row]
         configureCell?(element, cell)
         return cell
