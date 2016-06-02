@@ -12,6 +12,10 @@
 		13C83C4F1D002F4000E2C80F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13C83C4D1D002F4000E2C80F /* Main.storyboard */; };
 		13C83C511D002F4000E2C80F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13C83C501D002F4000E2C80F /* Assets.xcassets */; };
 		13C83C541D002F4000E2C80F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13C83C521D002F4000E2C80F /* LaunchScreen.storyboard */; };
+		13C83C5D1D002F9000E2C80F /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C83C5C1D002F9000E2C80F /* Car.swift */; };
+		13C83C5F1D002FF700E2C80F /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C83C5E1D002FF700E2C80F /* Brand.swift */; };
+		13C83C611D00301500E2C80F /* Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C83C601D00301500E2C80F /* Driver.swift */; };
+		13C83C631D00311300E2C80F /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C83C621D00311300E2C80F /* Data.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		13C83C501D002F4000E2C80F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		13C83C531D002F4000E2C80F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		13C83C551D002F4000E2C80F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13C83C5C1D002F9000E2C80F /* Car.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
+		13C83C5E1D002FF700E2C80F /* Brand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
+		13C83C601D00301500E2C80F /* Driver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Driver.swift; sourceTree = "<group>"; };
+		13C83C621D00311300E2C80F /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +46,7 @@
 		13C83C3D1D002F3F00E2C80F = {
 			isa = PBXGroup;
 			children = (
+				13C83C5B1D002F8700E2C80F /* Model */,
 				13C83C481D002F4000E2C80F /* Cars */,
 				13C83C471D002F4000E2C80F /* Products */,
 			);
@@ -62,6 +71,18 @@
 				13C83C551D002F4000E2C80F /* Info.plist */,
 			);
 			path = Cars;
+			sourceTree = "<group>";
+		};
+		13C83C5B1D002F8700E2C80F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				13C83C5C1D002F9000E2C80F /* Car.swift */,
+				13C83C5E1D002FF700E2C80F /* Brand.swift */,
+				13C83C601D00301500E2C80F /* Driver.swift */,
+				13C83C621D00311300E2C80F /* Data.swift */,
+			);
+			name = Model;
+			path = Cars/Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +156,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13C83C611D00301500E2C80F /* Driver.swift in Sources */,
+				13C83C631D00311300E2C80F /* Data.swift in Sources */,
 				13C83C4C1D002F4000E2C80F /* ViewController.swift in Sources */,
+				13C83C5F1D002FF700E2C80F /* Brand.swift in Sources */,
 				13C83C4A1D002F4000E2C80F /* AppDelegate.swift in Sources */,
+				13C83C5D1D002F9000E2C80F /* Car.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
