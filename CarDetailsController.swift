@@ -23,10 +23,15 @@ final class CarDetailsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let doubleLabelView = DoubleLabelView()
-        doubleLabelView.label1String = car.model
-        doubleLabelView.label2String = car.brand.name
-        addChildView(doubleLabelView)
+//        let doubleLabelView = DoubleLabelView()
+//        doubleLabelView.label1String = car.model
+//        doubleLabelView.label2String = car.brand.name
+//        addChildView(doubleLabelView)
+        
+        let labelButtonView = LabelButtonView()
+        labelButtonView.labelString = car.model
+        labelButtonView.buttonTitle = car.brand.name
+        addChildView(labelButtonView)
     }
     
 }

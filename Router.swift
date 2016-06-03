@@ -14,19 +14,33 @@ class Router {
     var navigationController: UINavigationController?
     
     func showCarsList() {
-        let loadingView = LoadingView()
-        showNext(loadingView)
-        data(2, carsCallback: { cars in
+        startLoading()
+        data(0, carsCallback: { cars in
             let carsListController = CarsListController(cars: cars)
             carsListController.carTouched = {
                 car in
                 self.showCarDetails(car)
             }
-            loadingView.addChildView(carsListController)
+            carsListController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add") {
+                self.showAddCar()
+            }
+            self.endLoading(carsListController)
         })
-        loadingView.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add") {
-            self.showAddCar()
+    }
+    
+    func startLoading() {
+        let loadingView = LoadingView()
+        showNext(loadingView)
+    }
+    
+    func endLoading(viewController: UIViewController) {
+        if navigationController?.viewControllers.count == 1 {
+            navigationController?.viewControllers = []
         }
+        else {
+            navigationController?.popViewControllerAnimated(false)
+        }
+        showNext(viewController, animated: false)
     }
 
     func showCarDetails(car: Car) {
@@ -50,6 +64,10 @@ class Router {
 
     func showAddCar() {
         let carFormController = CarFormController(car: nil)
+        carFormController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save") {
+            let car = carFormController.getCar()
+            self.showEditCar(car)
+        }
         showNext(carFormController)
     }
 
@@ -68,8 +86,8 @@ class Router {
 //        showAddCar()
     }
     
-    func showNext(viewController: UIViewController) {
-        navigationController?.pushViewController(viewController, animated: true)
+    func showNext(viewController: UIViewController, animated: Bool = true) {
+        navigationController?.pushViewController(viewController, animated: animated)
     }
         
 }

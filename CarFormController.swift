@@ -11,6 +11,7 @@ import UIKit
 final class CarFormController: UIViewController {
     
     var car: Car?
+    var formView: FormView?
     
     init(car: Car?) {
         self.car = car
@@ -31,8 +32,16 @@ final class CarFormController: UIViewController {
         let horsepowerField = FieldView()
         horsepowerField.labelString = "Horsepower"
         horsepowerField.textFieldString = horsepower
-        let formView = FormView(fields: [modelField, horsepowerField])
-        addChildView(formView)
+        formView = FormView(fields: [modelField, horsepowerField])
+        addChildView(formView!)
+    }
+    
+    func getCar() -> Car {
+        let model = formView?.fields[0].textFieldString ?? "empty"
+        let horsepower = Int(formView?.fields[1].textFieldString ?? "3") ?? 4
+        let brand = Brand(id: "", name: "NoBrand", image: "")
+        let car = Car(id: "", brand: brand, model: model, image: "", drivers: [], horsepower: horsepower, date: NSDate())
+        return car
     }
     
 }
