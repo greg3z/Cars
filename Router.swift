@@ -15,7 +15,7 @@ class Router {
     
     func showCarsList() {
         startLoading()
-        data(0, carsCallback: { cars in
+        getCars { cars in
             let carsListController = CarsListController(cars: cars)
             carsListController.carTouched = {
                 car in
@@ -25,7 +25,7 @@ class Router {
                 self.showAddCar()
             }
             self.endLoading(carsListController)
-        })
+        }
     }
     
     func startLoading() {
@@ -60,10 +60,10 @@ class Router {
     }
     
     func showRandomCarDetails() {
-        data(carsCallback: { cars in
+        getCars { cars in
             let car = cars[0]
             self.showCarDetails(car)
-        })
+        }
     }
 
     func showCarDetails(carId: String) {
