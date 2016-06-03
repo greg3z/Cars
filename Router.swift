@@ -48,7 +48,15 @@ class Router {
         carDetailsController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit") {
             self.showEditCar(car)
         }
+        carDetailsController.brandTouched = { brand in
+            self.showBrandDetails(brand)
+        }
         showNext(carDetailsController)
+    }
+    
+    func showBrandDetails(brand: Brand) {
+        let brandDetailsController = BrandDetailsController(brand: brand)
+        showNext(brandDetailsController)
     }
     
     func showRandomCarDetails() {
@@ -73,7 +81,7 @@ class Router {
 
     func showEditCar(car: Car) {
         let carFormController = CarFormController(car: car)
-        showNext(carFormController)
+        showModal(carFormController)
     }
 
     func showEditCar(carId: String) {
@@ -88,6 +96,14 @@ class Router {
     
     func showNext(viewController: UIViewController, animated: Bool = true) {
         navigationController?.pushViewController(viewController, animated: animated)
+    }
+    
+    func showModal(viewController: UIViewController) {
+        let navController = UINavigationController(rootViewController: viewController)
+        viewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Ok") {
+            navController.dismissViewControllerAnimated(true, completion: nil)
+        }
+        navigationController?.visibleViewController?.presentViewController(navController, animated: true, completion: nil)
     }
         
 }

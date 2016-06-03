@@ -11,6 +11,7 @@ import UIKit
 final class CarDetailsController: UIViewController {
     
     let car: Car
+    var brandTouched: (Brand -> Void)?
     
     init(car: Car) {
         self.car = car
@@ -31,6 +32,9 @@ final class CarDetailsController: UIViewController {
         let labelButtonView = LabelButtonView()
         labelButtonView.labelString = car.model
         labelButtonView.buttonTitle = car.brand.name
+        labelButtonView.buttonTouched = {
+            self.brandTouched?(self.car.brand)
+        }
         addChildView(labelButtonView)
     }
     
