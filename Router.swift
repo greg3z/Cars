@@ -81,6 +81,10 @@ class Router {
 
     func showEditCar(car: Car) {
         let carFormController = CarFormController(car: car)
+        carFormController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save") {
+            carFormController.getCar()
+            carFormController.dismissViewControllerAnimated(true, completion: nil)
+        }
         showModal(carFormController)
     }
 
@@ -100,7 +104,7 @@ class Router {
     
     func showModal(viewController: UIViewController) {
         let navController = UINavigationController(rootViewController: viewController)
-        viewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Ok") {
+        viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel") {
             navController.dismissViewControllerAnimated(true, completion: nil)
         }
         navigationController?.visibleViewController?.presentViewController(navController, animated: true, completion: nil)

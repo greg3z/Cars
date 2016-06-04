@@ -27,9 +27,15 @@ final class CarFormController: UIViewController {
         let model = car?.model
         let horsepower = car == nil ? "" : "\(car!.horsepower)"
         let modelField = FieldView()
+        let horsepowerField = FieldView()
         modelField.labelString = "Model"
         modelField.textFieldString = model
-        let horsepowerField = FieldView()
+        modelField.textFieldChanged = { text in
+            let brand = Brand(id: "", name: "NoName", image: "")
+            let newCar = Car(id: "", brand: brand, model: text, image: "", drivers: [], horsepower: Int(horsepowerField.textFieldString ?? "") ?? 0, date: NSDate())
+            self.car = newCar
+            NSLog("\(self.car)")
+        }
         horsepowerField.labelString = "Horsepower"
         horsepowerField.textFieldString = horsepower
         formView = FormView(fields: [modelField, horsepowerField])

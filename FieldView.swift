@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class FieldView: UIStackView {
+final class FieldView: UIStackView, UITextFieldDelegate {
     
     let label = UILabel()
     let textField = UITextField()
@@ -28,6 +28,7 @@ final class FieldView: UIStackView {
             textField.text = newValue
         }
     }
+    var textFieldChanged: (String -> Void)?
     
     init() {
         super.init(frame: .zero)
@@ -36,10 +37,16 @@ final class FieldView: UIStackView {
         addArrangedSubview(textField)
         label.backgroundColor = .whiteColor()
         textField.backgroundColor = .greenColor()
+        textField.delegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        textFieldChanged?(textField.text ?? "")
+        return true
     }
     
 }
