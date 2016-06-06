@@ -25,20 +25,13 @@ final class DriversListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .whiteColor()
-        if drivers.isEmpty { // empty management should go in ListView
-            let label = UILabel()
-            label.text = "No drivers"
-            addChildView(label)
+        let driversListView = ListView(elements: drivers, emptyMessage: "No drivers")
+        driversListView.configureCell = {
+            driver, cell in
+            cell.textLabel?.text = driver.name
         }
-        else {
-            let driversListView = ListView(elements: drivers)
-            driversListView.configureCell = {
-                driver, cell in
-                cell.textLabel?.text = driver.name
-            }
-            driversListView.elementTouched = driverTouched
-            addChildView(driversListView)
-        }
+        driversListView.elementTouched = driverTouched
+        addChildView(driversListView)
     }
     
 }

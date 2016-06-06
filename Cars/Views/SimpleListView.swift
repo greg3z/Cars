@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class ListView<T>: UITableViewController {
+final class SimpleListView<T>: UITableViewController {
     
     let cellId = "cellId"
     var elements: [T]
