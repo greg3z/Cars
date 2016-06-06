@@ -25,7 +25,6 @@ final class CarDetailsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let labelButtonView = LabelButtonView()
-        labelButtonView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         labelButtonView.labelString = car.model
         labelButtonView.buttonTitle = car.brand.name
         labelButtonView.buttonTouched = {
