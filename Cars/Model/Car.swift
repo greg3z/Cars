@@ -13,7 +13,7 @@ struct Car {
     let id: String
     let brand: Brand
     let model: String
-    let image: String
+    let image: NSURL
     var drivers: [Driver]
     let horsepower: Int
     let date: NSDate

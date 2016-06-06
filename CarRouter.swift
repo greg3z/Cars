@@ -25,7 +25,7 @@ class CarRouter {
             }
             carsListController.imageCallback = {
                 car, callback in
-                let task = ImageLoader(urlString: car.image, callback: callback)
+                let task = ImageLoader(url: car.image, callback: callback)
                 return task
             }
             AppRouter.sharedInstance.endLoading(carsListController)
@@ -42,7 +42,7 @@ class CarRouter {
         }
         carDetailsController.imageCallback = {
             car, callback in
-            let _ = ImageLoader(urlString: car.image, callback: callback)
+            let _ = ImageLoader(url: car.image, callback: callback)
         }
         AppRouter.sharedInstance.showNext(carDetailsController)
     }
@@ -61,7 +61,7 @@ class CarRouter {
         }
         carDriversController.imageCallback = {
             car, callback in
-            let _ = ImageLoader(urlString: car.image, callback: callback)
+            let _ = ImageLoader(url: car.image, size: 400, callback: callback)
         }
         AppRouter.sharedInstance.showNext(carDriversController)
     }

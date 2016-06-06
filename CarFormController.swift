@@ -32,7 +32,7 @@ final class CarFormController: UIViewController {
         modelField.textFieldString = model
         modelField.textFieldChanged = { text in
             let brand = Brand(id: "", name: "NoName", image: "")
-            let newCar = Car(id: "", brand: brand, model: text, image: "", drivers: [], horsepower: Int(horsepowerField.textFieldString ?? "") ?? 0, date: NSDate())
+            let newCar = Car(id: "", brand: brand, model: text, image: NSURL(string: "")!, drivers: [], horsepower: Int(horsepowerField.textFieldString ?? "") ?? 0, date: NSDate())
             self.car = newCar
             NSLog("\(self.car)")
         }
@@ -46,7 +46,7 @@ final class CarFormController: UIViewController {
         let model = formView?.fields[0].textFieldString ?? "empty"
         let horsepower = Int(formView?.fields[1].textFieldString ?? "3") ?? 4
         let brand = Brand(id: "", name: "NoBrand", image: "")
-        let car = Car(id: "", brand: brand, model: model, image: "", drivers: [], horsepower: horsepower, date: NSDate())
+        let car = Car(id: "", brand: brand, model: model, image: NSURL(string: "")!, drivers: [], horsepower: horsepower, date: NSDate())
         return car
     }
     
