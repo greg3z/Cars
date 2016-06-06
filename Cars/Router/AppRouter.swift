@@ -31,6 +31,7 @@ class AppRouter {
     func startApp() {
         //        showRandomCarDetails()
         CarRouter.sharedInstance.showCarsList()
+//        DriverRouter.sharedInstance.showDriversList()
         //        showAddCar()
     }
     

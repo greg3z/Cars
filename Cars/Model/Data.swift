@@ -31,7 +31,6 @@ func initData() {
     let huracan = Car(id: "777", brand: lamborghini, model: "Huracan", image: "http://www.topgear.com/sites/default/files/styles/fit_1960x1102/public/images/cars-road-test/carousel/2016/02/7e3e2773b42c912c58dffc8f1a717545/lp610_4_white_005.jpg?itok=a1lUTfYy", drivers: [], horsepower: 530, date: NSDate())
     let granTurismo = Car(id: "888", brand: maserati, model: "GranTurismo", image: "http://srv2.betterparts.org/images/maserati-granturismo-05.jpg", drivers: [], horsepower: 450, date: NSDate())
     var aventador = Car(id: "999", brand: lamborghini, model: "Aventador", image: "http://buyersguide.caranddriver.com/media/assets/submodel/6869.jpg", drivers: [], horsepower: 600, date: NSDate())
-    cars = [p911, amgGt, cayman, m4, r8, california, huracan, granTurismo, aventador]
     
     let greg = Driver(id: "1111", name: "Greg", cars: [p911, m4, aventador, cayman])
     let luna = Driver(id: "2222", name: "Luna", cars: [amgGt, m4, cayman])
@@ -45,6 +44,8 @@ func initData() {
     amgGt.drivers = [luna]
     r8.drivers = [dany]
     california.drivers = [dany]
+    
+    cars = [p911, amgGt, cayman, m4, r8, california, huracan, granTurismo, aventador]
 }
 
 func getCars(callback: [Car] -> Void) {

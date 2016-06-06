@@ -35,7 +35,11 @@ final class CarDetailsController: UIViewController {
         labelButtonView.buttonTouched = {
             self.brandTouched?(self.car.brand)
         }
-        addChildView(labelButtonView)
+        let halfHeight = view.frame.height / 2
+        addChildView(labelButtonView, frame: CGRect(x: 0, y: 0, width: view.frame.width, height: halfHeight))
+        
+        let driversListController = DriversListController(drivers: car.drivers)
+        addChildView(driversListController, frame: CGRect(x: 0, y: halfHeight, width: view.frame.width, height: halfHeight))
     }
     
 }
