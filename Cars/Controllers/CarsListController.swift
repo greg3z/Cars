@@ -27,7 +27,14 @@ final class CarsListController: UIViewController {
         let carsListView = ListView(elements: cars)
         carsListView.configureCell = {
             car, cell in
-            cell.textLabel?.text = car.model
+            cell.imageView?.image = UIImage(named: "cocoapods")
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.text = car.model + "\na\na\na\na\na"
+            let task = ImageLoader(urlString: car.image) {
+                image in
+                cell.imageView?.image = image
+            }
+            carsListView.asyncTask(task, forCell: cell)
         }
         carsListView.elementTouched = carTouched
         addChildView(carsListView)

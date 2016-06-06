@@ -22,15 +22,15 @@ func initData() {
     let maserati = Brand(id: "77", name: "Maserati", image: "")
     brands = [porsche, mercedes, bmw, audi, ferrari, lamborghini, maserati]
     
-    var p911 = Car(id: "111", brand: porsche, model: "911", image: "911.jpg", drivers: [], horsepower: 420, date: NSDate())
-    var amgGt = Car(id: "222", brand: mercedes, model: "AMG GT", image: "GT.jpg", drivers: [], horsepower: 500, date: NSDate())
-    var cayman = Car(id: "333", brand: porsche, model: "Cayman", image: "Cayman.jpg", drivers: [], horsepower: 300, date: NSDate())
-    var m4 = Car(id: "444", brand: bmw, model: "M4", image: "M4.jpg", drivers: [], horsepower: 420, date: NSDate())
-    var r8 = Car(id: "555", brand: audi, model: "R8", image: "R8.jpg", drivers: [], horsepower: 520, date: NSDate())
-    var california = Car(id: "666", brand: ferrari, model: "California", image: "California.jpg", drivers: [], horsepower: 570, date: NSDate())
-    let huracan = Car(id: "777", brand: lamborghini, model: "Huracan", image: "Huracan.jpg", drivers: [], horsepower: 530, date: NSDate())
-    let granTurismo = Car(id: "888", brand: maserati, model: "GranTurismo", image: "GranTurismo.jpg", drivers: [], horsepower: 450, date: NSDate())
-    var aventador = Car(id: "999", brand: lamborghini, model: "Aventador", image: "Aventador.jpg", drivers: [], horsepower: 600, date: NSDate())
+    var p911 = Car(id: "111", brand: porsche, model: "911", image: "http://www.meister-motors.com/img/911-gt3rs05.jpg", drivers: [], horsepower: 420, date: NSDate())
+    var amgGt = Car(id: "222", brand: mercedes, model: "AMG GT", image: "http://gtspirit.com/wp-content/uploads/2014/10/2048_0990fd90fs09fas09fs09fs90fsfs09244242.jpg", drivers: [], horsepower: 500, date: NSDate())
+    var cayman = Car(id: "333", brand: porsche, model: "Cayman", image: "http://files.porsche.com/filestore/image/multimedia/none/rd-2013-981-c7-modelimage-sideshot/model/032d028c-374b-11e3-bd76-001a64c55f5c;s3/porsche-model.png", drivers: [], horsepower: 300, date: NSDate())
+    var m4 = Car(id: "444", brand: bmw, model: "M4", image: "http://buyersguide.caranddriver.com/media/assets/submodel/6932.jpg", drivers: [], horsepower: 420, date: NSDate())
+    var r8 = Car(id: "555", brand: audi, model: "R8", image: "http://blogs-images.forbes.com/matthewdepaula/files/2015/02/2017-Audi-R8-V10-Plus.jpg", drivers: [], horsepower: 520, date: NSDate())
+    var california = Car(id: "666", brand: ferrari, model: "California", image: "http://bestcarmag.com/sites/default/files/6982632271873-ferrari-california.jpg", drivers: [], horsepower: 570, date: NSDate())
+    let huracan = Car(id: "777", brand: lamborghini, model: "Huracan", image: "http://www.topgear.com/sites/default/files/styles/fit_1960x1102/public/images/cars-road-test/carousel/2016/02/7e3e2773b42c912c58dffc8f1a717545/lp610_4_white_005.jpg?itok=a1lUTfYy", drivers: [], horsepower: 530, date: NSDate())
+    let granTurismo = Car(id: "888", brand: maserati, model: "GranTurismo", image: "http://srv2.betterparts.org/images/maserati-granturismo-05.jpg", drivers: [], horsepower: 450, date: NSDate())
+    var aventador = Car(id: "999", brand: lamborghini, model: "Aventador", image: "http://buyersguide.caranddriver.com/media/assets/submodel/6869.jpg", drivers: [], horsepower: 600, date: NSDate())
     cars = [p911, amgGt, cayman, m4, r8, california, huracan, granTurismo, aventador]
     
     let greg = Driver(id: "1111", name: "Greg", cars: [p911, m4, aventador, cayman])
@@ -72,4 +72,65 @@ func getDrivers(callback: [Driver] -> Void) {
             callback(drivers)
         }
     }
+}
+
+func getUrlContent(urlString: String, callback: NSData? -> Void) -> NSURLSessionDataTask {
+    NSLog("getUrlContent \(urlString)")
+    let request = NSURLRequest(URL: NSURL(string: urlString)!)
+    let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+        data, response, error in
+        if let error = error {
+            NSLog("\(error)")
+        }
+        else {
+            callback(data)
+        }
+    }
+    task.resume()
+    return task
+}
+
+extension NSURLSessionDataTask: CancelableTask {
+    
+}
+
+import UIKit
+
+class ImageLoader: CancelableTask {
+    
+    var canceled = false
+    
+    func cancel() {
+        canceled = true
+    }
+    
+    init(urlString: String, callback: UIImage -> Void) {
+        getUrlContent(urlString) {
+            data in
+            if let data = data, image = UIImage(data: data) {
+                if self.canceled {
+                    return
+                }
+                sleep(1)
+                if self.canceled {
+                    return
+                }
+                let newWidth: CGFloat = 50, newHeight: CGFloat = 50
+                UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight))
+                image.drawInRect(CGRectMake(0, 0, newWidth, newHeight))
+                let newImage = UIGraphicsGetImageFromCurrentImageContext()
+                UIGraphicsEndImageContext()
+                if self.canceled {
+                    return
+                }
+                dispatch_async(dispatch_get_main_queue()) {
+                    if self.canceled {
+                        return
+                    }
+                    callback(newImage)
+                }
+            }
+        }
+    }
+    
 }

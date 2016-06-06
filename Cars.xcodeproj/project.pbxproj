@@ -14,6 +14,7 @@
 		130BA86F1D0231CD003794C5 /* BrandDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130BA86E1D0231CD003794C5 /* BrandDetailController.swift */; };
 		135E2CDB1D056C0F009CF455 /* BrandRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135E2CDA1D056C0F009CF455 /* BrandRouter.swift */; };
 		135E2CDD1D056CE8009CF455 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135E2CDC1D056CE8009CF455 /* AppRouter.swift */; };
+		135E2CE11D05989F009CF455 /* cocoapods.png in Resources */ = {isa = PBXBuildFile; fileRef = 135E2CE01D05989F009CF455 /* cocoapods.png */; };
 		13C83C4A1D002F4000E2C80F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C83C491D002F4000E2C80F /* AppDelegate.swift */; };
 		13C83C4C1D002F4000E2C80F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C83C4B1D002F4000E2C80F /* ViewController.swift */; };
 		13C83C4F1D002F4000E2C80F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13C83C4D1D002F4000E2C80F /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 		130BA86E1D0231CD003794C5 /* BrandDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandDetailController.swift; sourceTree = "<group>"; };
 		135E2CDA1D056C0F009CF455 /* BrandRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandRouter.swift; sourceTree = "<group>"; };
 		135E2CDC1D056CE8009CF455 /* AppRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		135E2CE01D05989F009CF455 /* cocoapods.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cocoapods.png; sourceTree = "<group>"; };
 		13C83C461D002F4000E2C80F /* Cars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13C83C491D002F4000E2C80F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13C83C4B1D002F4000E2C80F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 		13C83C481D002F4000E2C80F /* Cars */ = {
 			isa = PBXGroup;
 			children = (
+				135E2CE01D05989F009CF455 /* cocoapods.png */,
 				13C83C491D002F4000E2C80F /* AppDelegate.swift */,
 				13C83C4B1D002F4000E2C80F /* ViewController.swift */,
 				13C83C4D1D002F4000E2C80F /* Main.storyboard */,
@@ -212,6 +215,7 @@
 			files = (
 				13C83C541D002F4000E2C80F /* LaunchScreen.storyboard in Resources */,
 				13C83C511D002F4000E2C80F /* Assets.xcassets in Resources */,
+				135E2CE11D05989F009CF455 /* cocoapods.png in Resources */,
 				13C83C4F1D002F4000E2C80F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
