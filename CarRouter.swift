@@ -8,13 +8,12 @@
 
 import UIKit
 
-class Router {
+class CarRouter {
     
-    static let sharedInstance = Router()
-    var navigationController: UINavigationController?
+    static let sharedInstance = CarRouter()
     
     func showCarsList() {
-        startLoading()
+        AppRouter.sharedInstance.startLoading()
         getCars { cars in
             let carsListController = CarsListController(cars: cars)
             carsListController.carTouched = {
@@ -24,23 +23,8 @@ class Router {
             carsListController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add") {
                 self.showAddCar()
             }
-            self.endLoading(carsListController)
+            AppRouter.sharedInstance.endLoading(carsListController)
         }
-    }
-    
-    func startLoading() {
-        let loadingView = LoadingView()
-        showNext(loadingView)
-    }
-    
-    func endLoading(viewController: UIViewController) {
-        if navigationController?.viewControllers.count == 1 {
-            navigationController?.viewControllers = []
-        }
-        else {
-            navigationController?.popViewControllerAnimated(false)
-        }
-        showNext(viewController, animated: false)
     }
 
     func showCarDetails(car: Car) {
@@ -49,14 +33,9 @@ class Router {
             self.showEditCar(car)
         }
         carDetailsController.brandTouched = { brand in
-            self.showBrandDetails(brand)
+            BrandRouter.sharedInstance.showBrandDetails(brand)
         }
-        showNext(carDetailsController)
-    }
-    
-    func showBrandDetails(brand: Brand) {
-        let brandDetailsController = BrandDetailsController(brand: brand)
-        showNext(brandDetailsController)
+        AppRouter.sharedInstance.showNext(carDetailsController)
     }
     
     func showRandomCarDetails() {
@@ -76,7 +55,7 @@ class Router {
             let car = carFormController.getCar()
             self.showEditCar(car)
         }
-        showNext(carFormController)
+        AppRouter.sharedInstance.showNext(carFormController)
     }
 
     func showEditCar(car: Car) {
@@ -85,29 +64,11 @@ class Router {
             carFormController.getCar()
             carFormController.dismissViewControllerAnimated(true, completion: nil)
         }
-        showModal(carFormController)
+        AppRouter.sharedInstance.showModal(carFormController)
     }
 
     func showEditCar(carId: String) {
         
-    }
-    
-    func startApp() {
-//        showRandomCarDetails()
-        showCarsList()
-//        showAddCar()
-    }
-    
-    func showNext(viewController: UIViewController, animated: Bool = true) {
-        navigationController?.pushViewController(viewController, animated: animated)
-    }
-    
-    func showModal(viewController: UIViewController) {
-        let navController = UINavigationController(rootViewController: viewController)
-        viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel") {
-            navController.dismissViewControllerAnimated(true, completion: nil)
-        }
-        navigationController?.visibleViewController?.presentViewController(navController, animated: true, completion: nil)
     }
         
 }

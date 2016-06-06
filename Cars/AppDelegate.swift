@@ -17,10 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initData()
         window = UIWindow()
         let navigationController = UINavigationController()
-        Router.sharedInstance.navigationController = navigationController
+        AppRouter.sharedInstance.navigationController = navigationController
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-        Router.sharedInstance.startApp()
+        AppRouter.sharedInstance.startApp()
         return true
     }
 
