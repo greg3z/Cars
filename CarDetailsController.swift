@@ -12,6 +12,7 @@ final class CarDetailsController: UIViewController {
     
     let car: Car
     var brandTouched: (Brand -> Void)?
+    var imageCallback: ((Car, UIImage -> Void) -> Void)?
     
     init(car: Car) {
         self.car = car
@@ -24,13 +25,17 @@ final class CarDetailsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let labelButtonView = LabelButtonView()
-        labelButtonView.labelString = car.model
-        labelButtonView.buttonTitle = car.brand.name
-        labelButtonView.buttonTouched = {
+        view.backgroundColor = .whiteColor()
+        let detailsView = DetailsView()
+        detailsView.buttonTouched = {
             self.brandTouched?(self.car.brand)
         }
-        addChildView(labelButtonView)
+        detailsView.setData(UIImage(named: "cocoapods"), string1: "Brand", buttonTitle: car.brand.name, string2: "Model", string21: car.model, string3: "Power", string31: "\(car.horsepower) hpw")
+        addChildView(detailsView, frame: CGRect(x: 0, y: 64, width: view.frame.width, height: view.frame.height - 64))
+        imageCallback?(car) {
+            image in
+            detailsView.setImage(image)
+        }
     }
     
 }

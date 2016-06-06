@@ -13,6 +13,7 @@ final class CarDriversController: UIViewController {
     let car: Car
     var brandTouched: (Brand -> Void)?
     var driverTouched: (Driver -> Void)?
+    var imageCallback: ((Car, UIImage -> Void) -> Void)?
     
     init(car: Car) {
         self.car = car
@@ -29,6 +30,7 @@ final class CarDriversController: UIViewController {
         let labelHeight: CGFloat = 40
         let carDetailsController = CarDetailsController(car: car)
         carDetailsController.brandTouched = brandTouched
+        carDetailsController.imageCallback = imageCallback
         addChildView(carDetailsController, frame: CGRect(x: 0, y: 0, width: view.frame.width, height: halfHeight))
         let driversListController = DriversListController(drivers: car.drivers)
         addChildView(driversListController, frame: CGRect(x: 0, y: halfHeight + labelHeight, width: view.frame.width, height: halfHeight - labelHeight))

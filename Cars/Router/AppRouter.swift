@@ -13,6 +13,23 @@ class AppRouter {
     static let sharedInstance = AppRouter()
     var navigationController: UINavigationController?
     
+    func startApp() {
+        CarRouter.sharedInstance.showCarsList()
+//        DriverRouter.sharedInstance.showDriversList()
+    }
+    
+    func showNext(viewController: UIViewController, animated: Bool = true) {
+        navigationController?.pushViewController(viewController, animated: animated)
+    }
+    
+    func showModal(viewController: UIViewController) {
+        let navController = UINavigationController(rootViewController: viewController)
+        viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel") {
+            navController.dismissViewControllerAnimated(true, completion: nil)
+        }
+        navigationController?.visibleViewController?.presentViewController(navController, animated: true, completion: nil)
+    }
+    
     func startLoading() {
         let loadingView = LoadingView()
         showNext(loadingView)
@@ -26,25 +43,6 @@ class AppRouter {
             navigationController?.popViewControllerAnimated(false)
         }
         showNext(viewController, animated: false)
-    }
-    
-    func startApp() {
-        //        showRandomCarDetails()
-        CarRouter.sharedInstance.showCarsList()
-//        DriverRouter.sharedInstance.showDriversList()
-        //        showAddCar()
-    }
-    
-    func showNext(viewController: UIViewController, animated: Bool = true) {
-        navigationController?.pushViewController(viewController, animated: animated)
-    }
-    
-    func showModal(viewController: UIViewController) {
-        let navController = UINavigationController(rootViewController: viewController)
-        viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel") {
-            navController.dismissViewControllerAnimated(true, completion: nil)
-        }
-        navigationController?.visibleViewController?.presentViewController(navController, animated: true, completion: nil)
     }
     
 }

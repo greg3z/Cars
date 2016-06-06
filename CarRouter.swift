@@ -40,6 +40,10 @@ class CarRouter {
         carDetailsController.brandTouched = { brand in
             BrandRouter.sharedInstance.showBrandDetails(brand)
         }
+        carDetailsController.imageCallback = {
+            car, callback in
+            let _ = ImageLoader(urlString: car.image, callback: callback)
+        }
         AppRouter.sharedInstance.showNext(carDetailsController)
     }
     
@@ -54,6 +58,10 @@ class CarRouter {
         carDriversController.driverTouched = {
             driver in
             
+        }
+        carDriversController.imageCallback = {
+            car, callback in
+            let _ = ImageLoader(urlString: car.image, callback: callback)
         }
         AppRouter.sharedInstance.showNext(carDriversController)
     }
