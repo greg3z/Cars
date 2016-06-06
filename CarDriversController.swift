@@ -26,11 +26,16 @@ final class CarDriversController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let halfHeight = view.frame.height / 2
+        let labelHeight: CGFloat = 40
         let carDetailsController = CarDetailsController(car: car)
         carDetailsController.brandTouched = brandTouched
         addChildView(carDetailsController, frame: CGRect(x: 0, y: 0, width: view.frame.width, height: halfHeight))
         let driversListController = DriversListController(drivers: car.drivers)
-        addChildView(driversListController, frame: CGRect(x: 0, y: halfHeight, width: view.frame.width, height: halfHeight))
+        addChildView(driversListController, frame: CGRect(x: 0, y: halfHeight + labelHeight, width: view.frame.width, height: halfHeight - labelHeight))
+        let label = UILabel()
+        label.text = "Drivers"
+        label.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+        addChildView(label, frame: CGRect(x: 0, y: halfHeight, width: view.frame.width, height: labelHeight))
     }
     
 }

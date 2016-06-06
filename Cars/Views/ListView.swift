@@ -25,6 +25,7 @@ final class ListView<T>: UITableViewController {
         super.viewDidLoad()
         tableView.estimatedRowHeight = 60
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellId)
+        tableView.tableFooterView = UIView()
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
