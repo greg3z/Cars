@@ -24,22 +24,14 @@ final class CarDetailsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let doubleLabelView = DoubleLabelView()
-//        doubleLabelView.label1String = car.model
-//        doubleLabelView.label2String = car.brand.name
-//        addChildView(doubleLabelView)
-        
         let labelButtonView = LabelButtonView()
+        labelButtonView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         labelButtonView.labelString = car.model
         labelButtonView.buttonTitle = car.brand.name
         labelButtonView.buttonTouched = {
             self.brandTouched?(self.car.brand)
         }
-        let halfHeight = view.frame.height / 2
-        addChildView(labelButtonView, frame: CGRect(x: 0, y: 0, width: view.frame.width, height: halfHeight))
-        
-        let driversListController = DriversListController(drivers: car.drivers)
-        addChildView(driversListController, frame: CGRect(x: 0, y: halfHeight, width: view.frame.width, height: halfHeight))
+        addChildView(labelButtonView)
     }
     
 }

@@ -18,7 +18,7 @@ class CarRouter {
             let carsListController = CarsListController(cars: cars)
             carsListController.carTouched = {
                 car in
-                self.showCarDetails(car)
+                self.showCarDrivers(car)
             }
             carsListController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add") {
                 self.showAddCar()
@@ -41,6 +41,21 @@ class CarRouter {
             BrandRouter.sharedInstance.showBrandDetails(brand)
         }
         AppRouter.sharedInstance.showNext(carDetailsController)
+    }
+    
+    func showCarDrivers(car: Car) {
+        let carDriversController = CarDriversController(car: car)
+        carDriversController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit") {
+            self.showEditCar(car)
+        }
+        carDriversController.brandTouched = { brand in
+            BrandRouter.sharedInstance.showBrandDetails(brand)
+        }
+        carDriversController.driverTouched = {
+            driver in
+            
+        }
+        AppRouter.sharedInstance.showNext(carDriversController)
     }
     
     func showRandomCarDetails() {
