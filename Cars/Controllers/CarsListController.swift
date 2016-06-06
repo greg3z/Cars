@@ -12,6 +12,7 @@ final class CarsListController: UIViewController {
     
     var cars: [Car]
     var carTouched: (Car -> Void)?
+    var imageCallback: ((Car, UIImage -> Void) -> CancelableTask)?
     
     init(cars: [Car]) {
         self.cars = cars
@@ -30,11 +31,13 @@ final class CarsListController: UIViewController {
             cell.imageView?.image = UIImage(named: "cocoapods")
             cell.textLabel?.numberOfLines = 0
             cell.textLabel?.text = car.model + "\na\na\na\na\na"
-            let task = ImageLoader(urlString: car.image) {
+            let task = self.imageCallback?(car) {
                 image in
                 cell.imageView?.image = image
             }
-            carsListView.asyncTask(task, forCell: cell)
+            if let task = task {
+                carsListView.asyncTask(task, forCell: cell)
+            }
         }
         carsListView.elementTouched = carTouched
         addChildView(carsListView)

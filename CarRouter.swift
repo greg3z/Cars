@@ -23,6 +23,11 @@ class CarRouter {
             carsListController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add") {
                 self.showAddCar()
             }
+            carsListController.imageCallback = {
+                car, callback in
+                let task = ImageLoader(urlString: car.image, callback: callback)
+                return task
+            }
             AppRouter.sharedInstance.endLoading(carsListController)
         }
     }
