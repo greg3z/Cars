@@ -15,8 +15,8 @@ class AppRouter {
     var loadingScreen = false
     
     func startApp() {
-//        CarRouter.sharedInstance.showCarsList()
-        CarRouter.sharedInstance.showCarDetails("555")
+        CarRouter.sharedInstance.showCarsList()
+//        CarRouter.sharedInstance.showCarDetails("555")
 //        DriverRouter.sharedInstance.showDriversList()
     }
     

@@ -44,7 +44,7 @@ final class DetailsView: UIStackView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setData(image: UIImage?, string1: String?, buttonTitle: String?, string2: String?, string21: String?, string3: String?, string31: String?) {
+    func setData(image: UIImage? = nil, string1: String? = nil, buttonTitle: String? = nil, string2: String? = nil, string21: String? = nil, string3: String? = nil, string31: String? = nil) {
         imageView.image = image
         label1.text = string1
         button.setTitle(buttonTitle, forState: .Normal)

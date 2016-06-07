@@ -23,10 +23,10 @@ final class BrandDetailsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let doubleLabelView = DoubleLabelView()
-        doubleLabelView.label1String = brand.id
-        doubleLabelView.label2String = brand.name
-        addChildView(doubleLabelView)
+        view.backgroundColor = .whiteColor()
+        let detailsView = DetailsView()
+        detailsView.setData(UIImage(named: "cocoapods"), string2: "Brand", string21: brand.name, string3: "id", string31: brand.id)
+        addChildView(detailsView)
     }
     
 }
