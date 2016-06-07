@@ -12,13 +12,26 @@ class AppRouter {
     
     static let sharedInstance = AppRouter()
     var navigationController: UINavigationController?
+    var loadingScreen = false
     
     func startApp() {
-        CarRouter.sharedInstance.showCarsList()
+//        CarRouter.sharedInstance.showCarsList()
+        CarRouter.sharedInstance.showCarDetails("555")
 //        DriverRouter.sharedInstance.showDriversList()
     }
     
     func showNext(viewController: UIViewController, animated: Bool = true) {
+        var animated = animated
+        if loadingScreen {
+            loadingScreen = false
+            animated = false
+            if navigationController?.viewControllers.count == 1 {
+                navigationController?.viewControllers = []
+            }
+            else {
+                navigationController?.popViewControllerAnimated(false)
+            }
+        }
         navigationController?.pushViewController(viewController, animated: animated)
     }
     
@@ -30,19 +43,10 @@ class AppRouter {
         navigationController?.visibleViewController?.presentViewController(navController, animated: true, completion: nil)
     }
     
-    func startLoading() {
+    func showLoading() {
         let loadingView = LoadingView()
         showNext(loadingView)
-    }
-    
-    func endLoading(viewController: UIViewController) {
-        if navigationController?.viewControllers.count == 1 {
-            navigationController?.viewControllers = []
-        }
-        else {
-            navigationController?.popViewControllerAnimated(false)
-        }
-        showNext(viewController, animated: false)
+        loadingScreen = true
     }
     
 }

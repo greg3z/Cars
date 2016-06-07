@@ -57,6 +57,17 @@ func getCars(callback: [Car] -> Void) {
     }
 }
 
+func getCar(carId: String, callback: Car -> Void) {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+        sleep(1)
+        dispatch_async(dispatch_get_main_queue()) {
+            for car in cars where car.id == carId {
+                callback(car)
+            }
+        }
+    }
+}
+
 func getBrands(callback: [Brand] -> Void) {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
         sleep(1)

@@ -13,10 +13,10 @@ class DriverRouter {
     static let sharedInstance = DriverRouter()
     
     func showDriversList() {
-        AppRouter.sharedInstance.startLoading()
+        AppRouter.sharedInstance.showLoading()
         getDrivers { drivers in
             let driversListController = DriversListController(drivers: drivers)
-            AppRouter.sharedInstance.endLoading(driversListController)
+            AppRouter.sharedInstance.showNext(driversListController)
         }
     }
     

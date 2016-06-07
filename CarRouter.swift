@@ -13,7 +13,7 @@ class CarRouter {
     static let sharedInstance = CarRouter()
     
     func showCarsList() {
-        AppRouter.sharedInstance.startLoading()
+        AppRouter.sharedInstance.showLoading()
         getCars { cars in
             let carsListController = CarsListController(cars: cars)
             carsListController.carTouched = {
@@ -28,7 +28,7 @@ class CarRouter {
                 let task = ImageLoader(url: car.image, callback: callback)
                 return task
             }
-            AppRouter.sharedInstance.endLoading(carsListController)
+            AppRouter.sharedInstance.showNext(carsListController)
         }
     }
 
@@ -74,7 +74,11 @@ class CarRouter {
     }
 
     func showCarDetails(carId: String) {
-        
+        AppRouter.sharedInstance.showLoading()
+        getCar(carId) {
+            car in
+            self.showCarDetails(car)
+        }
     }
 
     func showAddCar() {
