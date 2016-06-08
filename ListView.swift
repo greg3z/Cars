@@ -10,7 +10,11 @@ import UIKit
 
 final class ListView<T>: UIViewController {
     
-    var elements: [T]
+    var elements: [T] {
+        didSet {
+            simpleListView?.elements = elements
+        }
+    }
     let style: UITableViewStyle
     let emptyMessage: String?
     var configureCell: ((T, UITableViewCell) -> Void)?

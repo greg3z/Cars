@@ -8,7 +8,7 @@
 
 import Foundation
 
-var cars: [Car] = []
+var cars: Set<Car> = []
 var brands: [Brand] = []
 var drivers: [Driver] = []
 
@@ -52,7 +52,7 @@ func getCars(callback: [Car] -> Void) {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
         sleep(0)
         dispatch_async(dispatch_get_main_queue()) {
-            callback(cars)
+            callback(Array(cars))
         }
     }
 }
@@ -68,8 +68,13 @@ func getCar(carId: String, callback: Car -> Void) {
     }
 }
 
+func saveCar(car: Car) {
+    cars.insert(car)
+}
+
 func getEmptyCar() -> Car {
-    let car = Car(id: "", brand: nil, model: "", image: nil, drivers: [], horsepower: 0, date: NSDate())
+    let id = "\(arc4random_uniform(100))"
+    let car = Car(id: id, brand: nil, model: "", image: nil, drivers: [], horsepower: 0, date: NSDate())
     return car
 }
 

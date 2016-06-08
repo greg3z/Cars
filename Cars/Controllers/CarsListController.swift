@@ -10,9 +10,14 @@ import UIKit
 
 final class CarsListController: UIViewController {
     
-    var cars: [Car]
+    var cars: [Car] {
+        didSet {
+            carsListView?.elements = cars
+        }
+    }
     var carTouched: (Car -> Void)?
     var imageCallback: ((Car, UIImage -> Void) -> CancelableTask?)?
+    var carsListView: ListView<Car>?
     
     init(cars: [Car]) {
         self.cars = cars
@@ -25,8 +30,8 @@ final class CarsListController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let carsListView = ListView(elements: cars)
-        carsListView.configureCell = {
+        carsListView = ListView(elements: cars)
+        carsListView!.configureCell = {
             car, cell in
             cell.imageView?.image = UIImage(named: "cocoapods")
             cell.textLabel?.numberOfLines = 0
@@ -36,11 +41,11 @@ final class CarsListController: UIViewController {
                 cell.imageView?.image = image
             }
             if let task = task {
-                carsListView.asyncTask(task, forCell: cell)
+                self.carsListView!.asyncTask(task, forCell: cell)
             }
         }
-        carsListView.elementTouched = carTouched
-        addChildView(carsListView)
+        carsListView!.elementTouched = carTouched
+        addChildView(carsListView!)
     }
     
 }
