@@ -6,7 +6,7 @@
 //  Copyright © 2016 Grégoire Lhotellier. All rights reserved.
 //
 
-class CarStorage: CarLoader {
+final class CarStorage: CarLoader {
     
     func getCars(callback: [Car] -> Void) {
         _getCars(callback)

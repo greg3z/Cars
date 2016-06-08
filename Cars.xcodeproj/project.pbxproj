@@ -19,6 +19,7 @@
 		135E2CE91D05D356009CF455 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135E2CE81D05D356009CF455 /* ListView.swift */; };
 		135E2CEB1D05D61C009CF455 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135E2CEA1D05D61C009CF455 /* DetailsView.swift */; };
 		135E2CF01D083FA9009CF455 /* CarStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135E2CEF1D083FA9009CF455 /* CarStorage.swift */; };
+		135E2CF21D0861D2009CF455 /* DriverStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135E2CF11D0861D2009CF455 /* DriverStorage.swift */; };
 		13C83C4A1D002F4000E2C80F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C83C491D002F4000E2C80F /* AppDelegate.swift */; };
 		13C83C4C1D002F4000E2C80F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C83C4B1D002F4000E2C80F /* ViewController.swift */; };
 		13C83C4F1D002F4000E2C80F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13C83C4D1D002F4000E2C80F /* Main.storyboard */; };
@@ -49,6 +50,7 @@
 		135E2CE81D05D356009CF455 /* ListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		135E2CEA1D05D61C009CF455 /* DetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		135E2CEF1D083FA9009CF455 /* CarStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarStorage.swift; sourceTree = "<group>"; };
+		135E2CF11D0861D2009CF455 /* DriverStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverStorage.swift; sourceTree = "<group>"; };
 		13C83C461D002F4000E2C80F /* Cars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13C83C491D002F4000E2C80F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13C83C4B1D002F4000E2C80F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				135E2CEF1D083FA9009CF455 /* CarStorage.swift */,
+				135E2CF11D0861D2009CF455 /* DriverStorage.swift */,
 			);
 			name = Storage;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				13C83C731D007ACE00E2C80F /* LoadingView.swift in Sources */,
 				130BA8691D009D1B003794C5 /* FormView.swift in Sources */,
 				13C83C5D1D002F9000E2C80F /* Car.swift in Sources */,
+				135E2CF21D0861D2009CF455 /* DriverStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

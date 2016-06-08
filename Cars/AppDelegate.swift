@@ -21,9 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         let carStorage = CarStorage()
+        let driverStorage = DriverStorage()
         let appRouter = AppRouter(navigationController: navigationController)
         let carRouter = CarRouter(appRouter: appRouter, carLoader: carStorage)
-        let _ = DriverRouter(appRouter: appRouter)
+        let _ = DriverRouter(appRouter: appRouter, driverLoader: driverStorage)
         let brandRouter = BrandRouter(appRouter: appRouter)
         carRouter.brandRouter = brandRouter
         

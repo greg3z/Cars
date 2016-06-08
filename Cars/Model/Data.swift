@@ -78,7 +78,7 @@ func _getEmptyCar() -> Car {
     return car
 }
 
-func getBrands(callback: [Brand] -> Void) {
+func _getBrands(callback: [Brand] -> Void) {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
         sleep(1)
         dispatch_async(dispatch_get_main_queue()) {
@@ -87,7 +87,7 @@ func getBrands(callback: [Brand] -> Void) {
     }
 }
 
-func getDrivers(callback: [Driver] -> Void) {
+func _getDrivers(callback: [Driver] -> Void) {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
         sleep(1)
         dispatch_async(dispatch_get_main_queue()) {

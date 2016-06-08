@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CarRouter {
+final class CarRouter {
     
     let appRouter: AppRouter
     var brandRouter: BrandRouter!

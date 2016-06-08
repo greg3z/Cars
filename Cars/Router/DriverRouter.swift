@@ -8,20 +8,28 @@
 
 import UIKit
 
-class DriverRouter {
+final class DriverRouter {
     
     let appRouter: AppRouter
+    let driverLoader: DriverLoader
     
-    init(appRouter: AppRouter) {
+    init(appRouter: AppRouter, driverLoader: DriverLoader) {
         self.appRouter = appRouter
+        self.driverLoader = driverLoader
     }
     
     func showDriversList() {
         appRouter.showLoading()
-        getDrivers { drivers in
+        driverLoader.getDrivers { drivers in
             let driversListController = DriversListController(drivers: drivers)
             self.appRouter.showNext(driversListController)
         }
     }
+    
+}
+
+protocol DriverLoader {
+    
+    func getDrivers(callback: [Driver] -> Void)
     
 }
