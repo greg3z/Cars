@@ -19,3 +19,15 @@ struct Car {
     var date: NSDate
     
 }
+
+extension Car: Hashable {
+    
+    var hashValue: Int {
+        return id.hashValue
+    }
+    
+}
+
+func ==(lhs: Car, rhs: Car) -> Bool {
+    return lhs.id == rhs.id && lhs.brand == rhs.brand && lhs.model == rhs.model && lhs.image == rhs.image && lhs.drivers == rhs.drivers && lhs.horsepower == rhs.horsepower && lhs.date == rhs.date
+}

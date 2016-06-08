@@ -13,3 +13,15 @@ struct Brand {
     let image: String
     
 }
+
+extension Brand: Hashable {
+    
+    var hashValue: Int {
+        return id.hashValue
+    }
+    
+}
+
+func ==(lhs: Brand, rhs: Brand) -> Bool {
+    return lhs.id == rhs.id && lhs.name == rhs.name && lhs.image == rhs.image
+}

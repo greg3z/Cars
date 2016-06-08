@@ -13,3 +13,15 @@ struct Driver {
     var cars: [Car]
     
 }
+
+extension Driver: Hashable {
+    
+    var hashValue: Int {
+        return id.hashValue
+    }
+    
+}
+
+func ==(lhs: Driver, rhs: Driver) -> Bool {
+    return lhs.id == rhs.id && lhs.name == rhs.name && lhs.cars == rhs.cars
+}
