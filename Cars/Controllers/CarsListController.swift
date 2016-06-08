@@ -12,7 +12,7 @@ final class CarsListController: UIViewController {
     
     var cars: [Car]
     var carTouched: (Car -> Void)?
-    var imageCallback: ((Car, UIImage -> Void) -> CancelableTask)?
+    var imageCallback: ((Car, UIImage -> Void) -> CancelableTask?)?
     
     init(cars: [Car]) {
         self.cars = cars

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		130BA8671D009AAF003794C5 /* FieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130BA8661D009AAF003794C5 /* FieldView.swift */; };
 		130BA8691D009D1B003794C5 /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130BA8681D009D1B003794C5 /* FormView.swift */; };
 		130BA86B1D00A463003794C5 /* CarFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130BA86A1D00A463003794C5 /* CarFormController.swift */; };
 		130BA86F1D0231CD003794C5 /* BrandDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130BA86E1D0231CD003794C5 /* BrandDetailController.swift */; };
@@ -37,7 +36,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		130BA8661D009AAF003794C5 /* FieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldView.swift; sourceTree = "<group>"; };
 		130BA8681D009D1B003794C5 /* FormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
 		130BA86A1D00A463003794C5 /* CarFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarFormController.swift; sourceTree = "<group>"; };
 		130BA86E1D0231CD003794C5 /* BrandDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandDetailController.swift; sourceTree = "<group>"; };
@@ -144,7 +142,6 @@
 				13C83C661D005B2C00E2C80F /* SimpleListView.swift */,
 				135E2CE81D05D356009CF455 /* ListView.swift */,
 				13C83C721D007ACE00E2C80F /* LoadingView.swift */,
-				130BA8661D009AAF003794C5 /* FieldView.swift */,
 				130BA8681D009D1B003794C5 /* FormView.swift */,
 				135E2CEA1D05D61C009CF455 /* DetailsView.swift */,
 			);
@@ -258,7 +255,6 @@
 				13C83C731D007ACE00E2C80F /* LoadingView.swift in Sources */,
 				130BA8691D009D1B003794C5 /* FormView.swift in Sources */,
 				13C83C5D1D002F9000E2C80F /* Car.swift in Sources */,
-				130BA8671D009AAF003794C5 /* FieldView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

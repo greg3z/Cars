@@ -68,6 +68,11 @@ func getCar(carId: String, callback: Car -> Void) {
     }
 }
 
+func getEmptyCar() -> Car {
+    let car = Car(id: "", brand: nil, model: "", image: nil, drivers: [], horsepower: 0, date: NSDate())
+    return car
+}
+
 func getBrands(callback: [Brand] -> Void) {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
         sleep(1)

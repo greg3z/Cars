@@ -28,9 +28,11 @@ final class CarDetailsController: UIViewController {
         view.backgroundColor = .whiteColor()
         let detailsView = DetailsView()
         detailsView.buttonTouched = {
-            self.brandTouched?(self.car.brand)
+            if let brand = self.car.brand {
+                self.brandTouched?(brand)
+            }
         }
-        detailsView.setData(UIImage(named: "cocoapods"), string1: "Brand", buttonTitle: car.brand.name, string2: "Model", string21: car.model, string3: "Power", string31: "\(car.horsepower) hpw")
+        detailsView.setData(UIImage(named: "cocoapods"), string1: "Brand", buttonTitle: car.brand?.name, string2: "Model", string21: car.model, string3: "Power", string31: "\(car.horsepower) hpw")
         addChildView(detailsView, frame: CGRect(x: 0, y: 64, width: view.frame.width, height: view.frame.height - 64))
         imageCallback?(car) {
             image in

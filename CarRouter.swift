@@ -25,8 +25,11 @@ class CarRouter {
             }
             carsListController.imageCallback = {
                 car, callback in
-                let task = ImageLoader(url: car.image, callback: callback)
-                return task
+                if let image = car.image {
+                    let task = ImageLoader(url: image, callback: callback)
+                    return task
+                }
+                return nil
             }
             AppRouter.sharedInstance.showNext(carsListController)
         }
@@ -42,7 +45,9 @@ class CarRouter {
         }
         carDetailsController.imageCallback = {
             car, callback in
-            let _ = ImageLoader(url: car.image, callback: callback)
+            if let image = car.image {
+                let _ = ImageLoader(url: image, callback: callback)
+            }
         }
         AppRouter.sharedInstance.showNext(carDetailsController)
     }
@@ -61,7 +66,9 @@ class CarRouter {
         }
         carDriversController.imageCallback = {
             car, callback in
-            let _ = ImageLoader(url: car.image, size: 400, callback: callback)
+            if let image = car.image {
+                let _ = ImageLoader(url: image, size: 400, callback: callback)
+            }
         }
         AppRouter.sharedInstance.showNext(carDriversController)
     }
@@ -82,18 +89,16 @@ class CarRouter {
     }
 
     func showAddCar() {
-        let carFormController = CarFormController(car: nil)
+        let carFormController = CarFormController(car: getEmptyCar())
         carFormController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save") {
-            let car = carFormController.getCar()
-            self.showEditCar(car)
+            carFormController.dismissViewControllerAnimated(true, completion: nil)
         }
-        AppRouter.sharedInstance.showNext(carFormController)
+        AppRouter.sharedInstance.showModal(carFormController)
     }
 
     func showEditCar(car: Car) {
         let carFormController = CarFormController(car: car)
         carFormController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save") {
-            carFormController.getCar()
             carFormController.dismissViewControllerAnimated(true, completion: nil)
         }
         AppRouter.sharedInstance.showModal(carFormController)

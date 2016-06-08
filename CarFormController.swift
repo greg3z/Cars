@@ -10,10 +10,10 @@ import UIKit
 
 final class CarFormController: UIViewController {
     
-    var car: Car?
+    var car: Car
     var formView: FormView?
     
-    init(car: Car?) {
+    init(car: Car) {
         self.car = car
         super.init(nibName: nil, bundle: nil)
     }
@@ -21,33 +21,16 @@ final class CarFormController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        let model = car?.model
-        let horsepower = car == nil ? "" : "\(car!.horsepower)"
-        let modelField = FieldView()
-        let horsepowerField = FieldView()
-        modelField.labelString = "Model"
-        modelField.textFieldString = model
-        modelField.textFieldChanged = { text in
-            let brand = Brand(id: "", name: "NoName", image: "")
-            let newCar = Car(id: "", brand: brand, model: text, image: NSURL(string: "")!, drivers: [], horsepower: Int(horsepowerField.textFieldString ?? "") ?? 0, date: NSDate())
-            self.car = newCar
-            NSLog("\(self.car)")
+        view.backgroundColor = .whiteColor()
+        formView = FormView()
+        formView?.setData("Brand", button1String: car.brand?.name, label2String: "Model", textField2String: car.model, label3String: "Horsepower", textField3String: "\(car.horsepower)")
+        formView?.textField1Changed = {
+            self.car = Car(id: self.car.id, brand: self.car.brand, model: $0, image: self.car.image, drivers: self.car.drivers, horsepower: self.car.horsepower, date: self.car.date)
         }
-        horsepowerField.labelString = "Horsepower"
-        horsepowerField.textFieldString = horsepower
-        formView = FormView(fields: [modelField, horsepowerField])
         addChildView(formView!)
-    }
-    
-    func getCar() -> Car {
-        let model = formView?.fields[0].textFieldString ?? "empty"
-        let horsepower = Int(formView?.fields[1].textFieldString ?? "3") ?? 4
-        let brand = Brand(id: "", name: "NoBrand", image: "")
-        let car = Car(id: "", brand: brand, model: model, image: NSURL(string: "")!, drivers: [], horsepower: horsepower, date: NSDate())
-        return car
     }
     
 }

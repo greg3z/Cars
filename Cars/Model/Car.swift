@@ -11,11 +11,11 @@ import Foundation
 struct Car {
     
     let id: String
-    let brand: Brand
-    let model: String
-    let image: NSURL
+    var brand: Brand?
+    var model: String
+    var image: NSURL?
     var drivers: [Driver]
-    let horsepower: Int
-    let date: NSDate
+    var horsepower: Int
+    var date: NSDate
     
 }
