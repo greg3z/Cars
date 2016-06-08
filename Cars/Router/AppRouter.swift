@@ -10,14 +10,11 @@ import UIKit
 
 class AppRouter {
     
-    static let sharedInstance = AppRouter()
-    var navigationController: UINavigationController?
+    var navigationController: UINavigationController
     var loadingScreen = false
     
-    func startApp() {
-        CarRouter.sharedInstance.showCarsList()
-//        CarRouter.sharedInstance.showCarDetails("555")
-//        DriverRouter.sharedInstance.showDriversList()
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
     }
     
     func showNext(viewController: UIViewController, animated: Bool = true) {
@@ -25,14 +22,14 @@ class AppRouter {
         if loadingScreen {
             loadingScreen = false
             animated = false
-            if navigationController?.viewControllers.count == 1 {
-                navigationController?.viewControllers = []
+            if navigationController.viewControllers.count == 1 {
+                navigationController.viewControllers = []
             }
             else {
-                navigationController?.popViewControllerAnimated(false)
+                navigationController.popViewControllerAnimated(false)
             }
         }
-        navigationController?.pushViewController(viewController, animated: animated)
+        navigationController.pushViewController(viewController, animated: animated)
     }
     
     func showModal(viewController: UIViewController) {
@@ -40,7 +37,7 @@ class AppRouter {
         viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel") {
             navController.dismissViewControllerAnimated(true, completion: nil)
         }
-        navigationController?.visibleViewController?.presentViewController(navController, animated: true, completion: nil)
+        navigationController.visibleViewController?.presentViewController(navController, animated: true, completion: nil)
     }
     
     func showLoading() {

@@ -10,11 +10,18 @@ import UIKit
 
 class CarRouter {
     
-    static let sharedInstance = CarRouter()
+    let appRouter: AppRouter
+    var brandRouter: BrandRouter!
+    let carLoader: CarLoader
+    
+    init(appRouter: AppRouter, carLoader: CarLoader) {
+        self.appRouter = appRouter
+        self.carLoader = carLoader
+    }
     
     func showCarsList() {
-        AppRouter.sharedInstance.showLoading()
-        getCars { cars in
+        appRouter.showLoading()
+        carLoader.getCars { cars in
             let carsListController = CarsListController(cars: cars)
             carsListController.carTouched = {
                 car in
@@ -31,7 +38,7 @@ class CarRouter {
                 }
                 return nil
             }
-            AppRouter.sharedInstance.showNext(carsListController)
+            self.appRouter.showNext(carsListController)
         }
     }
 
@@ -41,7 +48,7 @@ class CarRouter {
             self.showEditCar(car)
         }
         carDetailsController.brandTouched = { brand in
-            BrandRouter.sharedInstance.showBrandDetails(brand)
+            self.brandRouter.showBrandDetails(brand)
         }
         carDetailsController.imageCallback = {
             car, callback in
@@ -49,7 +56,7 @@ class CarRouter {
                 let _ = ImageLoader(url: image, callback: callback)
             }
         }
-        AppRouter.sharedInstance.showNext(carDetailsController)
+        appRouter.showNext(carDetailsController)
     }
     
     func showCarDrivers(car: Car) {
@@ -58,7 +65,7 @@ class CarRouter {
             self.showEditCar(car)
         }
         carDriversController.brandTouched = { brand in
-            BrandRouter.sharedInstance.showBrandDetails(brand)
+            self.brandRouter.showBrandDetails(brand)
         }
         carDriversController.driverTouched = {
             driver in
@@ -70,30 +77,30 @@ class CarRouter {
                 let _ = ImageLoader(url: image, size: 400, callback: callback)
             }
         }
-        AppRouter.sharedInstance.showNext(carDriversController)
+        appRouter.showNext(carDriversController)
     }
     
     func showRandomCarDetails() {
-        getCars { cars in
+        carLoader.getCars { cars in
             let car = cars[0]
             self.showCarDetails(car)
         }
     }
 
     func showCarDetails(carId: String) {
-        AppRouter.sharedInstance.showLoading()
-        getCar(carId) {
+        appRouter.showLoading()
+        carLoader.getCar(carId) {
             car in
             self.showCarDetails(car)
         }
     }
 
     func showAddCar() {
-        let carFormController = CarFormController(car: getEmptyCar())
+        let carFormController = CarFormController(car: carLoader.getEmptyCar())
         carFormController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save") {
             carFormController.dismissViewControllerAnimated(true, completion: nil)
         }
-        AppRouter.sharedInstance.showModal(carFormController)
+        appRouter.showModal(carFormController)
     }
 
     func showEditCar(car: Car) {
@@ -101,11 +108,19 @@ class CarRouter {
         carFormController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save") {
             carFormController.dismissViewControllerAnimated(true, completion: nil)
         }
-        AppRouter.sharedInstance.showModal(carFormController)
+        appRouter.showModal(carFormController)
     }
 
     func showEditCar(carId: String) {
         
     }
         
+}
+
+protocol CarLoader {
+    
+    func getCars(callback: [Car] -> Void)
+    func getEmptyCar() -> Car
+    func getCar(carId: String, callback: Car -> Void)
+    
 }

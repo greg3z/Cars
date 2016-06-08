@@ -10,11 +10,15 @@ import UIKit
 
 class BrandRouter {
     
-    static let sharedInstance = BrandRouter()
+    let appRouter: AppRouter
+    
+    init(appRouter: AppRouter) {
+        self.appRouter = appRouter
+    }
     
     func showBrandDetails(brand: Brand) {
         let brandDetailsController = BrandDetailsController(brand: brand)
-        AppRouter.sharedInstance.showNext(brandDetailsController)
+        appRouter.showNext(brandDetailsController)
     }
     
 }

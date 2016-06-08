@@ -48,7 +48,7 @@ func initData() {
     cars = [p911, amgGt, cayman, m4, r8, california, huracan, granTurismo, aventador]
 }
 
-func getCars(callback: [Car] -> Void) {
+func _getCars(callback: [Car] -> Void) {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
         sleep(0)
         dispatch_async(dispatch_get_main_queue()) {
@@ -57,7 +57,7 @@ func getCars(callback: [Car] -> Void) {
     }
 }
 
-func getCar(carId: String, callback: Car -> Void) {
+func _getCar(carId: String, callback: Car -> Void) {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
         sleep(1)
         dispatch_async(dispatch_get_main_queue()) {
@@ -68,11 +68,11 @@ func getCar(carId: String, callback: Car -> Void) {
     }
 }
 
-func saveCar(car: Car) {
+func _saveCar(car: Car) {
     cars.insert(car)
 }
 
-func getEmptyCar() -> Car {
+func _getEmptyCar() -> Car {
     let id = "\(arc4random_uniform(100))"
     let car = Car(id: id, brand: nil, model: "", image: nil, drivers: [], horsepower: 0, date: NSDate())
     return car

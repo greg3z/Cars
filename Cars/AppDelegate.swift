@@ -17,10 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initData()
         window = UIWindow()
         let navigationController = UINavigationController()
-        AppRouter.sharedInstance.navigationController = navigationController
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-        AppRouter.sharedInstance.startApp()
+        
+        let carStorage = CarStorage()
+        let appRouter = AppRouter(navigationController: navigationController)
+        let carRouter = CarRouter(appRouter: appRouter, carLoader: carStorage)
+        let _ = DriverRouter(appRouter: appRouter)
+        let brandRouter = BrandRouter(appRouter: appRouter)
+        carRouter.brandRouter = brandRouter
+        
+        carRouter.showCarsList()
+        
         return true
     }
 

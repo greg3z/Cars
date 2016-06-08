@@ -18,6 +18,7 @@
 		135E2CE71D05B093009CF455 /* CarDriversController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135E2CE61D05B093009CF455 /* CarDriversController.swift */; };
 		135E2CE91D05D356009CF455 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135E2CE81D05D356009CF455 /* ListView.swift */; };
 		135E2CEB1D05D61C009CF455 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135E2CEA1D05D61C009CF455 /* DetailsView.swift */; };
+		135E2CF01D083FA9009CF455 /* CarStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135E2CEF1D083FA9009CF455 /* CarStorage.swift */; };
 		13C83C4A1D002F4000E2C80F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C83C491D002F4000E2C80F /* AppDelegate.swift */; };
 		13C83C4C1D002F4000E2C80F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C83C4B1D002F4000E2C80F /* ViewController.swift */; };
 		13C83C4F1D002F4000E2C80F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13C83C4D1D002F4000E2C80F /* Main.storyboard */; };
@@ -47,6 +48,7 @@
 		135E2CE61D05B093009CF455 /* CarDriversController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarDriversController.swift; sourceTree = "<group>"; };
 		135E2CE81D05D356009CF455 /* ListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		135E2CEA1D05D61C009CF455 /* DetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		135E2CEF1D083FA9009CF455 /* CarStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarStorage.swift; sourceTree = "<group>"; };
 		13C83C461D002F4000E2C80F /* Cars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13C83C491D002F4000E2C80F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13C83C4B1D002F4000E2C80F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -89,11 +91,20 @@
 			path = Cars/Router;
 			sourceTree = "<group>";
 		};
+		135E2CEE1D083F92009CF455 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				135E2CEF1D083FA9009CF455 /* CarStorage.swift */,
+			);
+			name = Storage;
+			sourceTree = "<group>";
+		};
 		13C83C3D1D002F3F00E2C80F = {
 			isa = PBXGroup;
 			children = (
 				13C83C6A1D005CEE00E2C80F /* Tools.swift */,
 				13C83C621D00311300E2C80F /* Data.swift */,
+				135E2CEE1D083F92009CF455 /* Storage */,
 				135E2CD91D056BD9009CF455 /* Router */,
 				13C83C5B1D002F8700E2C80F /* Models */,
 				13C83C641D005AE000E2C80F /* Views */,
@@ -234,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				135E2CE51D05AB10009CF455 /* DriverRouter.swift in Sources */,
+				135E2CF01D083FA9009CF455 /* CarStorage.swift in Sources */,
 				130BA86B1D00A463003794C5 /* CarFormController.swift in Sources */,
 				135E2CE71D05B093009CF455 /* CarDriversController.swift in Sources */,
 				13C83C611D00301500E2C80F /* Driver.swift in Sources */,

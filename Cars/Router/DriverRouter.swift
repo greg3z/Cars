@@ -10,13 +10,17 @@ import UIKit
 
 class DriverRouter {
     
-    static let sharedInstance = DriverRouter()
+    let appRouter: AppRouter
+    
+    init(appRouter: AppRouter) {
+        self.appRouter = appRouter
+    }
     
     func showDriversList() {
-        AppRouter.sharedInstance.showLoading()
+        appRouter.showLoading()
         getDrivers { drivers in
             let driversListController = DriversListController(drivers: drivers)
-            AppRouter.sharedInstance.showNext(driversListController)
+            self.appRouter.showNext(driversListController)
         }
     }
     
