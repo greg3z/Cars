@@ -35,7 +35,7 @@ final class CarsListController: UIViewController {
             car, cell in
             cell.imageView?.image = UIImage(named: "cocoapods")
             cell.textLabel?.numberOfLines = 0
-            cell.textLabel?.text = car.model + "\na\na\na\na\na"
+            cell.textLabel?.text = car.model// + "\na\na\na\na\na"
             let task = self.imageCallback?(car) {
                 image in
                 cell.imageView?.image = image

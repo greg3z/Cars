@@ -38,6 +38,9 @@ final class CarRouter {
                 }
                 return nil
             }
+            self.carLoader.addListener {
+                carsListController.cars = Array(self.carLoader.cars!)
+            }
             self.appRouter.showNext(carsListController)
         }
     }
@@ -106,6 +109,8 @@ final class CarRouter {
     func showEditCar(car: Car) {
         let carFormController = CarFormController(car: car)
         carFormController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save") {
+            let car = carFormController.car
+            self.carLoader.saveCar(car)
             carFormController.dismissViewControllerAnimated(true, completion: nil)
         }
         appRouter.showModal(carFormController)
@@ -119,8 +124,12 @@ final class CarRouter {
 
 protocol CarLoader {
     
+    var cars: Set<Car>? { get }
+    
     func getCars(callback: [Car] -> Void)
     func getEmptyCar() -> Car
     func getCar(carId: String, callback: Car -> Void)
+    func saveCar(car: Car)
+    func addListener(callback: Void -> Void)
     
 }

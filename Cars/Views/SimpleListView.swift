@@ -11,7 +11,11 @@ import UIKit
 final class SimpleListView<T>: UITableViewController {
     
     let cellId = "cellId"
-    var elements: [T]
+    var elements: [T] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     var configureCell: ((T, UITableViewCell) -> Void)?
     var elementTouched: (T -> Void)?
     var cancelableTasks = [UITableViewCell: CancelableTask]()

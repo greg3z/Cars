@@ -29,5 +29,5 @@ extension Car: Hashable {
 }
 
 func ==(lhs: Car, rhs: Car) -> Bool {
-    return lhs.id == rhs.id && lhs.brand == rhs.brand && lhs.model == rhs.model && lhs.image == rhs.image && lhs.drivers == rhs.drivers && lhs.horsepower == rhs.horsepower && lhs.date == rhs.date
+    return lhs.id == rhs.id// && lhs.brand == rhs.brand && lhs.model == rhs.model && lhs.image == rhs.image && lhs.drivers == rhs.drivers && lhs.horsepower == rhs.horsepower && lhs.date == rhs.date
 }

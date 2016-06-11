@@ -8,7 +8,7 @@
 
 import Foundation
 
-var cars: Set<Car> = []
+var _cars: Set<Car> = []
 var brands: [Brand] = []
 var drivers: [Driver] = []
 
@@ -45,14 +45,14 @@ func initData() {
     r8.drivers = [dany]
     california.drivers = [dany]
     
-    cars = [p911, amgGt, cayman, m4, r8, california, huracan, granTurismo, aventador]
+    _cars = [p911, amgGt, cayman, m4, r8, california, huracan, granTurismo, aventador]
 }
 
 func _getCars(callback: [Car] -> Void) {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
         sleep(0)
         dispatch_async(dispatch_get_main_queue()) {
-            callback(Array(cars))
+            callback(Array(_cars))
         }
     }
 }
@@ -61,7 +61,7 @@ func _getCar(carId: String, callback: Car -> Void) {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
         sleep(1)
         dispatch_async(dispatch_get_main_queue()) {
-            for car in cars where car.id == carId {
+            for car in _cars where car.id == carId {
                 callback(car)
             }
         }
@@ -69,7 +69,7 @@ func _getCar(carId: String, callback: Car -> Void) {
 }
 
 func _saveCar(car: Car) {
-    cars.insert(car)
+    _cars.insert(car)
 }
 
 func _getEmptyCar() -> Car {
@@ -97,7 +97,7 @@ func _getDrivers(callback: [Driver] -> Void) {
 }
 
 func getUrlContent(url: NSURL, callback: NSData? -> Void) -> NSURLSessionDataTask {
-    NSLog("getUrlContent \(url)")
+//    NSLog("getUrlContent \(url)")
     let request = NSURLRequest(URL: url)
     let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
         data, response, error in
@@ -133,7 +133,7 @@ class ImageLoader: CancelableTask {
                 if self.canceled {
                     return
                 }
-                sleep(1)
+//                sleep(1)
                 if self.canceled {
                     return
                 }
