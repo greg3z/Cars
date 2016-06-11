@@ -8,42 +8,25 @@
 
 import Foundation
 
-typealias Callback = Void -> Void
-
-final class CarStorage: CarLoader {
+final class CarStorage: Storage {
     
-    var cars: Set<Car>?
+    var elements: Set<Car>?
     var listeners = [Callback]()
     
-    func getCars(callback: [Car] -> Void) {
-        if cars == nil {
-            cars = _cars
+    func getElements(callback: Set<Car> -> Void) {
+        if elements == nil {
+            elements = _cars
         }
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-            sleep(0)
+            usleep(500000)
             dispatch_async(dispatch_get_main_queue()) {
-                callback(Array(self.cars!))
+                callback(self.elements!)
             }
         }
     }
     
-    func getEmptyCar() -> Car {
+    func getEmptyElement() -> Car {
         return _getEmptyCar()
-    }
-    
-    func getCar(carId: String, callback: Car -> Void) {
-        _getCar(carId, callback: callback)
-    }
-    
-    func saveCar(car: Car) {
-        cars?.insert(car)
-        for callback in listeners {
-            callback()
-        }
-    }
-    
-    func addListener(callback: Void -> Void) {
-        listeners.append(callback)
     }
     
 }

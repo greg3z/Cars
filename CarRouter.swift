@@ -12,17 +12,17 @@ final class CarRouter {
     
     let appRouter: AppRouter
     var brandRouter: BrandRouter!
-    let carLoader: CarLoader
+    var carStorage: CarStorage
     
-    init(appRouter: AppRouter, carLoader: CarLoader) {
+    init(appRouter: AppRouter, carStorage: CarStorage) {
         self.appRouter = appRouter
-        self.carLoader = carLoader
+        self.carStorage = carStorage
     }
     
     func showCarsList() {
         appRouter.showLoading()
-        carLoader.getCars { cars in
-            let carsListController = CarsListController(cars: cars)
+        carStorage.getElements { cars in
+            let carsListController = CarsListController(cars: Array(cars))
             carsListController.carTouched = {
                 car in
                 self.showCarDrivers(car)
@@ -38,8 +38,8 @@ final class CarRouter {
                 }
                 return nil
             }
-            self.carLoader.addListener {
-                carsListController.cars = Array(self.carLoader.cars!)
+            self.carStorage.addListener {
+                carsListController.cars = Array(self.carStorage.elements!)
             }
             self.appRouter.showNext(carsListController)
         }
@@ -83,23 +83,21 @@ final class CarRouter {
         appRouter.showNext(carDriversController)
     }
     
-    func showRandomCarDetails() {
-        carLoader.getCars { cars in
-            let car = cars[0]
-            self.showCarDetails(car)
-        }
-    }
-
     func showCarDetails(carId: String) {
         appRouter.showLoading()
-        carLoader.getCar(carId) {
-            car in
-            self.showCarDetails(car)
+        carStorage.getElements {
+            cars in
+            let filteredCars = cars.filter {
+                $0.id == carId
+            }
+            if let car = filteredCars.first {
+                self.showCarDetails(car)
+            }
         }
     }
 
     func showAddCar() {
-        let carFormController = CarFormController(car: carLoader.getEmptyCar())
+        let carFormController = CarFormController(car: carStorage.getEmptyElement())
         carFormController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save") {
             carFormController.dismissViewControllerAnimated(true, completion: nil)
         }
@@ -110,26 +108,10 @@ final class CarRouter {
         let carFormController = CarFormController(car: car)
         carFormController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save") {
             let car = carFormController.car
-            self.carLoader.saveCar(car)
+            self.carStorage.setElement(car)
             carFormController.dismissViewControllerAnimated(true, completion: nil)
         }
         appRouter.showModal(carFormController)
     }
-
-    func showEditCar(carId: String) {
-        
-    }
-        
-}
-
-protocol CarLoader {
-    
-    var cars: Set<Car>? { get }
-    
-    func getCars(callback: [Car] -> Void)
-    func getEmptyCar() -> Car
-    func getCar(carId: String, callback: Car -> Void)
-    func saveCar(car: Car)
-    func addListener(callback: Void -> Void)
-    
+   
 }
