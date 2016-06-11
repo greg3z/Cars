@@ -19,6 +19,8 @@ final class SimpleListView<T>: UITableViewController {
     var configureCell: ((T, UITableViewCell) -> Void)?
     var elementTouched: (T -> Void)?
     var cancelableTasks = [UITableViewCell: CancelableTask]()
+    var editActions: (T -> [EditAction])?
+    var elementAction: ((T, String) -> Void)?
     
     init(elements: [T], style: UITableViewStyle = .Plain) {
         self.elements = elements
@@ -55,6 +57,20 @@ final class SimpleListView<T>: UITableViewController {
         }
     }
     
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let element = elements[indexPath.row]
+        var rowActions = [UITableViewRowAction]()
+        for editAction in editActions?(element) ?? [] {
+            let rowAction = UITableViewRowAction(style: editAction.style, title: editAction.title) {
+                [weak self] _, indexPath in
+                tableView.setEditing(false, animated: true)
+                self?.elementAction?(element, editAction.title)
+            }
+            rowActions.append(rowAction)
+        }
+        return rowActions
+    }
+    
     func asyncTask(task: CancelableTask, forCell cell: UITableViewCell) {
         cancelableTasks[cell] = task
     }
@@ -64,6 +80,13 @@ final class SimpleListView<T>: UITableViewController {
             tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
         }
     }
+    
+}
+
+struct EditAction {
+    
+    let title: String
+    let style: UITableViewRowActionStyle
     
 }
 

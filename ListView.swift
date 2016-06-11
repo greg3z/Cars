@@ -20,6 +20,8 @@ final class ListView<T>: UIViewController {
     var configureCell: ((T, UITableViewCell) -> Void)?
     var elementTouched: (T -> Void)?
     var simpleListView: SimpleListView<T>?
+    var editActions: (T -> [EditAction])?
+    var elementAction: ((T, String) -> Void)?
     
     init(elements: [T], style: UITableViewStyle = .Plain, emptyMessage: String? = nil) {
         self.elements = elements
@@ -39,6 +41,8 @@ final class ListView<T>: UIViewController {
             simpleListView = SimpleListView(elements: elements, style: style)
             simpleListView!.configureCell = configureCell
             simpleListView!.elementTouched = elementTouched
+            simpleListView!.editActions = editActions
+            simpleListView!.elementAction = elementAction
             addChildView(simpleListView!)
         }
     }

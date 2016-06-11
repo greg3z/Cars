@@ -17,6 +17,8 @@ final class CarsListController: UIViewController {
     }
     var carTouched: (Car -> Void)?
     var imageCallback: ((Car, UIImage -> Void) -> CancelableTask?)?
+    var editActions: (Car -> [EditAction])?
+    var elementAction: ((Car, String) -> Void)?
     var carsListView: ListView<Car>?
     
     init(cars: [Car]) {
@@ -45,6 +47,8 @@ final class CarsListController: UIViewController {
             }
         }
         carsListView!.elementTouched = carTouched
+        carsListView!.editActions = editActions
+        carsListView!.elementAction = elementAction
         addChildView(carsListView!)
     }
     

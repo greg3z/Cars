@@ -32,6 +32,7 @@ extension Storage {
     
     mutating func deleteElement(element: T) {
         elements?.remove(element)
+        elementsChanged()
     }
     
     func elementsChanged() {

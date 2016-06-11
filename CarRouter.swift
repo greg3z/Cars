@@ -22,7 +22,7 @@ final class CarRouter {
     func showCarsList() {
         appRouter.showLoading()
         carStorage.getElements { cars in
-            let carsListController = CarsListController(cars: Array(cars))
+            let carsListController = DeletableCarsListController(cars: Array(cars))
             carsListController.carTouched = {
                 car in
                 self.showCarDrivers(car)
@@ -37,6 +37,9 @@ final class CarRouter {
                     return task
                 }
                 return nil
+            }
+            carsListController.deleteCar = {
+                self.carStorage.deleteElement($0)
             }
             self.carStorage.addListener {
                 carsListController.cars = Array(self.carStorage.elements!)
@@ -99,6 +102,8 @@ final class CarRouter {
     func showAddCar() {
         let carFormController = CarFormController(car: carStorage.getEmptyElement())
         carFormController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save") {
+            let car = carFormController.car
+            self.carStorage.setElement(car)
             carFormController.dismissViewControllerAnimated(true, completion: nil)
         }
         appRouter.showModal(carFormController)
