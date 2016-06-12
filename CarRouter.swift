@@ -19,18 +19,18 @@ final class CarRouter {
         self.carStorage = carStorage
     }
     
-    func showCarsList() {
-        appRouter.showLoading()
+    func showCarsList(tab: AppRouter.Tab) {
+        appRouter.showLoading(tab)
         carStorage.getElements { cars in
-            self.showCarsList(Array(cars))
+            self.showCarsList(Array(cars), tab: tab)
         }
     }
     
-    func showCarsList(cars: [Car]) {
+    func showCarsList(cars: [Car], tab: AppRouter.Tab) {
         let carsListController = DeletableCarsListController(cars: cars)
         carsListController.carTouched = {
             car in
-            self.showCarDrivers(car)
+            self.showCarDrivers(car, tab: tab)
         }
         carsListController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add") {
             self.showAddCar()
@@ -49,10 +49,10 @@ final class CarRouter {
         carStorage.addListener {
             carsListController.cars = Array(self.carStorage.elements!)
         }
-        appRouter.showNext(carsListController)
+        appRouter.showNext(carsListController, tab: tab)
     }
 
-    func showCarDetails(car: Car) {
+    func showCarDetails(car: Car, tab: AppRouter.Tab) {
         let carDetailsController = CarDetailsController(car: car)
         carDetailsController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit") {
             self.showEditCar(car)
@@ -66,10 +66,10 @@ final class CarRouter {
                 let _ = ImageLoader(url: image, callback: callback)
             }
         }
-        appRouter.showNext(carDetailsController)
+        appRouter.showNext(carDetailsController, tab: tab)
     }
     
-    func showCarDrivers(car: Car) {
+    func showCarDrivers(car: Car, tab: AppRouter.Tab) {
         let carDriversController = CarDriversController(car: car)
         carDriversController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit") {
             self.showEditCar(car)
@@ -87,18 +87,18 @@ final class CarRouter {
                 let _ = ImageLoader(url: image, size: 400, callback: callback)
             }
         }
-        appRouter.showNext(carDriversController)
+        appRouter.showNext(carDriversController, tab: tab)
     }
     
-    func showCarDetails(carId: String) {
-        appRouter.showLoading()
+    func showCarDetails(carId: String, tab: AppRouter.Tab) {
+        appRouter.showLoading(tab)
         carStorage.getElements {
             cars in
             let filteredCars = cars.filter {
                 $0.id == carId
             }
             if let car = filteredCars.first {
-                self.showCarDetails(car)
+                self.showCarDetails(car, tab: tab)
             }
         }
     }

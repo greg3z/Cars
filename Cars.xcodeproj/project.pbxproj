@@ -88,9 +88,9 @@
 		135E2CD91D056BD9009CF455 /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				135E2CDC1D056CE8009CF455 /* AppRouter.swift */,
 				13C83C6C1D005F7500E2C80F /* CarRouter.swift */,
 				135E2CDA1D056C0F009CF455 /* BrandRouter.swift */,
-				135E2CDC1D056CE8009CF455 /* AppRouter.swift */,
 				135E2CE41D05AB10009CF455 /* DriverRouter.swift */,
 			);
 			name = Router;

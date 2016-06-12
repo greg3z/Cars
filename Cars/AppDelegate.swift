@@ -16,20 +16,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         initData()
         window = UIWindow()
-        let navigationController = UINavigationController()
-        window?.rootViewController = navigationController
+        let tabbarController = UITabBarController()
+        window?.rootViewController = tabbarController
         window?.makeKeyAndVisible()
         
         let carStorage = CarStorage()
         let driverStorage = DriverStorage()
-        let appRouter = AppRouter(navigationController: navigationController)
+        let appRouter = AppRouter(tabbarController: tabbarController)
         let carRouter = CarRouter(appRouter: appRouter, carStorage: carStorage)
         let driverRouter = DriverRouter(appRouter: appRouter, driverStorage: driverStorage)
         let brandRouter = BrandRouter(appRouter: appRouter)
         carRouter.brandRouter = brandRouter
         
-        carRouter.showCarsList()
-//        driverRouter.showDriversList()
+        carRouter.showCarsList(.Cars)
+        driverRouter.showDriversList(.Drivers)
         
         return true
     }

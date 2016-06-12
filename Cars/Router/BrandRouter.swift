@@ -17,8 +17,8 @@ final class BrandRouter {
     }
     
     func showBrandDetails(brand: Brand) {
-        let brandDetailsController = BrandDetailsController(brand: brand)
-        appRouter.showNext(brandDetailsController)
+//        let brandDetailsController = BrandDetailsController(brand: brand)
+//        appRouter.showNext(brandDetailsController)
     }
     
 }

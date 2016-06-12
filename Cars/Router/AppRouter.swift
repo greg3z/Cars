@@ -10,17 +10,33 @@ import UIKit
 
 final class AppRouter {
     
-    var navigationController: UINavigationController
-    var loadingScreen = false
+    let tabbarController: UITabBarController
+    let carsNavigationController: UINavigationController
+    let driversNavigationController: UINavigationController
+    var loadingScreen: [Tab: Bool] = [.Cars: false, .Drivers: false]
     
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    enum Tab: String {
+        case Cars, Drivers
     }
     
-    func showNext(viewController: UIViewController, animated: Bool = true) {
+    init(tabbarController: UITabBarController) {
+        self.tabbarController = tabbarController
+        carsNavigationController = UINavigationController()
+        carsNavigationController.tabBarItem = UITabBarItem(title: Tab.Cars.rawValue, image: nil, selectedImage: nil)
+        driversNavigationController = UINavigationController()
+        driversNavigationController.tabBarItem = UITabBarItem(title: Tab.Drivers.rawValue, image: nil, selectedImage: nil)
+        tabbarController.setViewControllers([carsNavigationController, driversNavigationController], animated: true)
+    }
+    
+    func showNext(viewController: UIViewController, tab: Tab, animated: Bool = true) {
+        let navigationController: UINavigationController
+        switch tab {
+        case .Cars: navigationController = carsNavigationController
+        case .Drivers: navigationController = driversNavigationController
+        }
         var animated = animated
-        if loadingScreen {
-            loadingScreen = false
+        if loadingScreen[tab]! {
+            loadingScreen[tab] = false
             animated = false
             if navigationController.viewControllers.count == 1 {
                 navigationController.viewControllers = []
@@ -37,13 +53,13 @@ final class AppRouter {
         viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel") {
             navController.dismissViewControllerAnimated(true, completion: nil)
         }
-        navigationController.visibleViewController?.presentViewController(navController, animated: true, completion: nil)
+        tabbarController.presentViewController(navController, animated: true, completion: nil)
     }
     
-    func showLoading() {
+    func showLoading(tab: Tab) {
         let loadingView = LoadingView()
-        showNext(loadingView)
-        loadingScreen = true
+        showNext(loadingView, tab: tab)
+        loadingScreen[tab] = true
     }
     
 }

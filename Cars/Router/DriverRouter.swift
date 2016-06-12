@@ -18,14 +18,14 @@ final class DriverRouter {
         self.driverStorage = driverStorage
     }
     
-    func showDriversList() {
-        appRouter.showLoading()
+    func showDriversList(tab: AppRouter.Tab) {
+        appRouter.showLoading(tab)
         driverStorage.getElements { drivers in
-            self.showDriversList(Array(drivers))
+            self.showDriversList(Array(drivers), tab: tab)
         }
     }
     
-    func showDriversList(drivers: [Driver]) {
+    func showDriversList(drivers: [Driver], tab: AppRouter.Tab) {
         let driversListController = DriversListController(drivers: drivers)
         driversListController.driverTouched = {
             driver in
@@ -40,7 +40,7 @@ final class DriverRouter {
         driverStorage.addListener {
             driversListController.drivers = Array(self.driverStorage.elements!)
         }
-        appRouter.showNext(driversListController)
+        appRouter.showNext(driversListController, tab: tab)
     }
     
     func showAddDriver() {
