@@ -29,18 +29,33 @@ final class DriverRouter {
         let driversListController = DriversListController(drivers: drivers)
         driversListController.driverTouched = {
             driver in
-            
+            self.showDriverDetails(driver, tab: tab)
         }
         driversListController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add") {
             self.showAddDriver()
         }
-//        driversListController.deleteDriver = {
-//            self.driverStorage.deleteElement($0)
-//        }
         driverStorage.addListener {
             driversListController.drivers = Array(self.driverStorage.elements!)
         }
         appRouter.showNext(driversListController, tab: tab)
+    }
+    
+    func showDriverDetails(driver: Driver, tab: AppRouter.Tab) {
+        let driverDetailsController = DriverDetailsController(driver: driver)
+        driverDetailsController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit") {
+            self.showEditDriver(driver)
+        }
+        appRouter.showNext(driverDetailsController, tab: tab)
+    }
+    
+    func showEditDriver(driver: Driver) {
+        let driverFormController = DriverFormController(driver: driver)
+        driverFormController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save") {
+            let driver = driverFormController.driver
+            self.driverStorage.setElement(driver)
+            driverFormController.dismissViewControllerAnimated(true, completion: nil)
+        }
+        appRouter.showModal(driverFormController)
     }
     
     func showAddDriver() {

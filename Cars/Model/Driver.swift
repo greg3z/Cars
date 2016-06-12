@@ -23,5 +23,5 @@ extension Driver: Hashable {
 }
 
 func ==(lhs: Driver, rhs: Driver) -> Bool {
-    return lhs.id == rhs.id && lhs.name == rhs.name && lhs.cars == rhs.cars
+    return lhs.id == rhs.id// && lhs.name == rhs.name && lhs.cars == rhs.cars
 }

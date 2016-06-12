@@ -10,8 +10,13 @@ import UIKit
 
 final class DriversListController: UIViewController {
     
-    var drivers: [Driver]
+    var drivers: [Driver]{
+        didSet {
+            driversListView?.elements = drivers
+        }
+    }
     var driverTouched: (Driver -> Void)?
+    var driversListView: ListView<Driver>?
     
     init(drivers: [Driver]) {
         self.drivers = drivers
@@ -25,13 +30,13 @@ final class DriversListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .whiteColor()
-        let driversListView = ListView(elements: drivers, emptyMessage: "No drivers")
-        driversListView.configureCell = {
+        driversListView = ListView(elements: drivers, emptyMessage: "No drivers")
+        driversListView!.configureCell = {
             driver, cell in
             cell.textLabel?.text = driver.name
         }
-        driversListView.elementTouched = driverTouched
-        addChildView(driversListView)
+        driversListView!.elementTouched = driverTouched
+        addChildView(driversListView!)
     }
     
 }
