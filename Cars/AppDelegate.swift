@@ -24,11 +24,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let driverStorage = DriverStorage()
         let appRouter = AppRouter(navigationController: navigationController)
         let carRouter = CarRouter(appRouter: appRouter, carStorage: carStorage)
-        let _ = DriverRouter(appRouter: appRouter, driverLoader: driverStorage)
+        let driverRouter = DriverRouter(appRouter: appRouter, driverStorage: driverStorage)
         let brandRouter = BrandRouter(appRouter: appRouter)
         carRouter.brandRouter = brandRouter
         
         carRouter.showCarsList()
+//        driverRouter.showDriversList()
         
         return true
     }

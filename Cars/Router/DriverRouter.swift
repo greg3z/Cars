@@ -11,25 +11,40 @@ import UIKit
 final class DriverRouter {
     
     let appRouter: AppRouter
-    let driverLoader: DriverLoader
+    var driverStorage: DriverStorage
     
-    init(appRouter: AppRouter, driverLoader: DriverLoader) {
+    init(appRouter: AppRouter, driverStorage: DriverStorage) {
         self.appRouter = appRouter
-        self.driverLoader = driverLoader
+        self.driverStorage = driverStorage
     }
     
     func showDriversList() {
         appRouter.showLoading()
-        driverLoader.getDrivers { drivers in
-            let driversListController = DriversListController(drivers: drivers)
-            self.appRouter.showNext(driversListController)
+        driverStorage.getElements { drivers in
+            self.showDriversList(Array(drivers))
         }
     }
     
-}
-
-protocol DriverLoader {
+    func showDriversList(drivers: [Driver]) {
+        let driversListController = DriversListController(drivers: drivers)
+        driversListController.driverTouched = {
+            driver in
+            
+        }
+        driversListController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add") {
+            self.showAddDriver()
+        }
+//        driversListController.deleteDriver = {
+//            self.driverStorage.deleteElement($0)
+//        }
+        driverStorage.addListener {
+            driversListController.drivers = Array(self.driverStorage.elements!)
+        }
+        appRouter.showNext(driversListController)
+    }
     
-    func getDrivers(callback: [Driver] -> Void)
+    func showAddDriver() {
+        
+    }
     
 }

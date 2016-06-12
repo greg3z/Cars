@@ -10,7 +10,7 @@ import Foundation
 
 var _cars: Set<Car> = []
 var brands: [Brand] = []
-var drivers: [Driver] = []
+var _drivers: Set<Driver> = []
 
 func initData() {
     let porsche = Brand(id: "11", name: "Porsche", image: "")
@@ -35,7 +35,7 @@ func initData() {
     let greg = Driver(id: "1111", name: "Greg", cars: [p911, m4, aventador, cayman])
     let luna = Driver(id: "2222", name: "Luna", cars: [amgGt, m4, cayman])
     let dany = Driver(id: "3333", name: "Dany", cars: [r8, m4, california])
-    drivers = [greg, luna, dany]
+    _drivers = [greg, luna, dany]
     
     p911.drivers = [greg]
     m4.drivers = [greg, luna, dany]
@@ -48,50 +48,24 @@ func initData() {
     _cars = [p911, amgGt, cayman, m4, r8, california, huracan, granTurismo, aventador]
 }
 
-func _getCars(callback: [Car] -> Void) {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-        sleep(0)
-        dispatch_async(dispatch_get_main_queue()) {
-            callback(Array(_cars))
-        }
-    }
-}
-
-func _getCar(carId: String, callback: Car -> Void) {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-        sleep(1)
-        dispatch_async(dispatch_get_main_queue()) {
-            for car in _cars where car.id == carId {
-                callback(car)
-            }
-        }
-    }
-}
-
-func _saveCar(car: Car) {
-    _cars.insert(car)
-}
-
 func _getEmptyCar() -> Car {
     let id = "\(arc4random_uniform(100))"
     let car = Car(id: id, brand: nil, model: "", image: nil, drivers: [], horsepower: 0, date: NSDate())
     return car
 }
 
+func _getEmptyDriver() -> Driver {
+    let id = "\(arc4random_uniform(100))"
+    let driver = Driver(id: id, name: "", cars: [])
+    return driver
+}
+
+
 func _getBrands(callback: [Brand] -> Void) {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
         sleep(1)
         dispatch_async(dispatch_get_main_queue()) {
             callback(brands)
-        }
-    }
-}
-
-func _getDrivers(callback: [Driver] -> Void) {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-        sleep(1)
-        dispatch_async(dispatch_get_main_queue()) {
-            callback(drivers)
         }
     }
 }

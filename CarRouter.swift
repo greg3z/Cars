@@ -22,30 +22,34 @@ final class CarRouter {
     func showCarsList() {
         appRouter.showLoading()
         carStorage.getElements { cars in
-            let carsListController = DeletableCarsListController(cars: Array(cars))
-            carsListController.carTouched = {
-                car in
-                self.showCarDrivers(car)
-            }
-            carsListController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add") {
-                self.showAddCar()
-            }
-            carsListController.imageCallback = {
-                car, callback in
-                if let image = car.image {
-                    let task = ImageLoader(url: image, callback: callback)
-                    return task
-                }
-                return nil
-            }
-            carsListController.deleteCar = {
-                self.carStorage.deleteElement($0)
-            }
-            self.carStorage.addListener {
-                carsListController.cars = Array(self.carStorage.elements!)
-            }
-            self.appRouter.showNext(carsListController)
+            self.showCarsList(Array(cars))
         }
+    }
+    
+    func showCarsList(cars: [Car]) {
+        let carsListController = DeletableCarsListController(cars: cars)
+        carsListController.carTouched = {
+            car in
+            self.showCarDrivers(car)
+        }
+        carsListController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add") {
+            self.showAddCar()
+        }
+        carsListController.imageCallback = {
+            car, callback in
+            if let image = car.image {
+                let task = ImageLoader(url: image, callback: callback)
+                return task
+            }
+            return nil
+        }
+        carsListController.deleteCar = {
+            self.carStorage.deleteElement($0)
+        }
+        carStorage.addListener {
+            carsListController.cars = Array(self.carStorage.elements!)
+        }
+        appRouter.showNext(carsListController)
     }
 
     func showCarDetails(car: Car) {

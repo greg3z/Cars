@@ -6,10 +6,27 @@
 //  Copyright © 2016 Grégoire Lhotellier. All rights reserved.
 //
 
-final class DriverStorage: DriverLoader {
+import Foundation
+
+final class DriverStorage: Storage {
     
-    func getDrivers(callback: [Driver] -> Void) {
-        _getDrivers(callback)
+    var elements: Set<Driver>?
+    var listeners = [Callback]()
+    
+    func getElements(callback: Set<Driver> -> Void) {
+        if elements == nil {
+            elements = _drivers
+        }
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            usleep(500000)
+            dispatch_async(dispatch_get_main_queue()) {
+                callback(self.elements!)
+            }
+        }
+    }
+    
+    func getEmptyElement() -> Driver {
+        return _getEmptyDriver()
     }
     
 }
