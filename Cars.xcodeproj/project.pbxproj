@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		130BA8691D009D1B003794C5 /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130BA8681D009D1B003794C5 /* FormView.swift */; };
 		130BA86B1D00A463003794C5 /* CarFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130BA86A1D00A463003794C5 /* CarFormController.swift */; };
-		130BA86F1D0231CD003794C5 /* BrandDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130BA86E1D0231CD003794C5 /* BrandDetailController.swift */; };
-		135E2CDB1D056C0F009CF455 /* BrandRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135E2CDA1D056C0F009CF455 /* BrandRouter.swift */; };
 		135E2CDD1D056CE8009CF455 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135E2CDC1D056CE8009CF455 /* AppRouter.swift */; };
 		135E2CE11D05989F009CF455 /* cocoapods.png in Resources */ = {isa = PBXBuildFile; fileRef = 135E2CE01D05989F009CF455 /* cocoapods.png */; };
 		135E2CE31D05AA4A009CF455 /* DriversListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135E2CE21D05AA4A009CF455 /* DriversListController.swift */; };
@@ -30,7 +28,6 @@
 		13C83C511D002F4000E2C80F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13C83C501D002F4000E2C80F /* Assets.xcassets */; };
 		13C83C541D002F4000E2C80F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13C83C521D002F4000E2C80F /* LaunchScreen.storyboard */; };
 		13C83C5D1D002F9000E2C80F /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C83C5C1D002F9000E2C80F /* Car.swift */; };
-		13C83C5F1D002FF700E2C80F /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C83C5E1D002FF700E2C80F /* Brand.swift */; };
 		13C83C611D00301500E2C80F /* Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C83C601D00301500E2C80F /* Driver.swift */; };
 		13C83C631D00311300E2C80F /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C83C621D00311300E2C80F /* Data.swift */; };
 		13C83C671D005B2C00E2C80F /* SimpleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C83C661D005B2C00E2C80F /* SimpleListView.swift */; };
@@ -44,8 +41,6 @@
 /* Begin PBXFileReference section */
 		130BA8681D009D1B003794C5 /* FormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
 		130BA86A1D00A463003794C5 /* CarFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarFormController.swift; sourceTree = "<group>"; };
-		130BA86E1D0231CD003794C5 /* BrandDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandDetailController.swift; sourceTree = "<group>"; };
-		135E2CDA1D056C0F009CF455 /* BrandRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandRouter.swift; sourceTree = "<group>"; };
 		135E2CDC1D056CE8009CF455 /* AppRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		135E2CE01D05989F009CF455 /* cocoapods.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cocoapods.png; sourceTree = "<group>"; };
 		135E2CE21D05AA4A009CF455 /* DriversListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriversListController.swift; sourceTree = "<group>"; };
@@ -67,7 +62,6 @@
 		13C83C531D002F4000E2C80F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		13C83C551D002F4000E2C80F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13C83C5C1D002F9000E2C80F /* Car.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
-		13C83C5E1D002FF700E2C80F /* Brand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
 		13C83C601D00301500E2C80F /* Driver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Driver.swift; sourceTree = "<group>"; };
 		13C83C621D00311300E2C80F /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Data.swift; path = Cars/Model/Data.swift; sourceTree = "<group>"; };
 		13C83C661D005B2C00E2C80F /* SimpleListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SimpleListView.swift; path = Cars/Views/SimpleListView.swift; sourceTree = "<group>"; };
@@ -94,7 +88,6 @@
 			children = (
 				135E2CDC1D056CE8009CF455 /* AppRouter.swift */,
 				13C83C6C1D005F7500E2C80F /* CarRouter.swift */,
-				135E2CDA1D056C0F009CF455 /* BrandRouter.swift */,
 				135E2CE41D05AB10009CF455 /* DriverRouter.swift */,
 			);
 			name = Router;
@@ -131,14 +124,6 @@
 				136AFE6D1D0DBA6F002411BF /* DriverFormController.swift */,
 			);
 			name = Driver;
-			sourceTree = "<group>";
-		};
-		136AFE6A1D0DB675002411BF /* Brand */ = {
-			isa = PBXGroup;
-			children = (
-				130BA86E1D0231CD003794C5 /* BrandDetailController.swift */,
-			);
-			name = Brand;
 			sourceTree = "<group>";
 		};
 		13C83C3D1D002F3F00E2C80F = {
@@ -182,7 +167,6 @@
 			isa = PBXGroup;
 			children = (
 				13C83C5C1D002F9000E2C80F /* Car.swift */,
-				13C83C5E1D002FF700E2C80F /* Brand.swift */,
 				13C83C601D00301500E2C80F /* Driver.swift */,
 			);
 			name = Models;
@@ -204,7 +188,6 @@
 		13C83C651D005AEA00E2C80F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				136AFE6A1D0DB675002411BF /* Brand */,
 				136AFE681D0DB663002411BF /* Car */,
 				136AFE691D0DB66C002411BF /* Driver */,
 			);
@@ -288,10 +271,8 @@
 				130BA86B1D00A463003794C5 /* CarFormController.swift in Sources */,
 				135E2CE71D05B093009CF455 /* CarDriversController.swift in Sources */,
 				13C83C611D00301500E2C80F /* Driver.swift in Sources */,
-				130BA86F1D0231CD003794C5 /* BrandDetailController.swift in Sources */,
 				13C83C711D0066A000E2C80F /* CarDetailsController.swift in Sources */,
 				136AFE671D0CD14C002411BF /* DeletableCarsListController.swift in Sources */,
-				135E2CDB1D056C0F009CF455 /* BrandRouter.swift in Sources */,
 				135E2CE31D05AA4A009CF455 /* DriversListController.swift in Sources */,
 				136AFE631D0CBB61002411BF /* Storage.swift in Sources */,
 				135E2CE91D05D356009CF455 /* ListView.swift in Sources */,
@@ -301,7 +282,6 @@
 				135E2CDD1D056CE8009CF455 /* AppRouter.swift in Sources */,
 				13C83C4C1D002F4000E2C80F /* ViewController.swift in Sources */,
 				13C83C671D005B2C00E2C80F /* SimpleListView.swift in Sources */,
-				13C83C5F1D002FF700E2C80F /* Brand.swift in Sources */,
 				13C83C691D005C3E00E2C80F /* CarsListController.swift in Sources */,
 				136AFE6C1D0DB6B2002411BF /* DriverDetailsController.swift in Sources */,
 				136AFE6E1D0DBA6F002411BF /* DriverFormController.swift in Sources */,

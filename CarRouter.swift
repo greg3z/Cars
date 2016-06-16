@@ -11,7 +11,6 @@ import UIKit
 final class CarRouter {
     
     let appRouter: AppRouter
-    var brandRouter: BrandRouter!
     var carStorage: CarStorage
     
     init(appRouter: AppRouter, carStorage: CarStorage) {
@@ -57,9 +56,6 @@ final class CarRouter {
         carDetailsController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit") {
             self.showEditCar(car)
         }
-        carDetailsController.brandTouched = { brand in
-            self.brandRouter.showBrandDetails(brand)
-        }
         carDetailsController.imageCallback = {
             car, callback in
             if let image = car.image {
@@ -73,9 +69,6 @@ final class CarRouter {
         let carDriversController = CarDriversController(car: car)
         carDriversController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit") {
             self.showEditCar(car)
-        }
-        carDriversController.brandTouched = { brand in
-            self.brandRouter.showBrandDetails(brand)
         }
         carDriversController.driverTouched = {
             driver in

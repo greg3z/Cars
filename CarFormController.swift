@@ -26,9 +26,9 @@ final class CarFormController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .whiteColor()
         formView = FormView()
-        formView?.setData("Brand", button1String: car.brand?.name, label2String: "Model", textField2String: car.model, label3String: "Horsepower", textField3String: "\(car.horsepower)")
+        formView?.setData("Brand", button1String: nil, label2String: "Model", textField2String: car.model, label3String: "Horsepower", textField3String: "\(car.horsepower)")
         formView?.textField1Changed = {
-            self.car = Car(id: self.car.id, brand: self.car.brand, model: $0, image: self.car.image, drivers: self.car.drivers, horsepower: self.car.horsepower, date: self.car.date)
+            self.car = Car(id: self.car.id, model: $0, image: self.car.image, drivers: self.car.drivers, horsepower: self.car.horsepower, date: self.car.date)
         }
         addChildView(formView!)
     }

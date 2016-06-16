@@ -25,8 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let appRouter = AppRouter(tabbarController: tabbarController)
         let carRouter = CarRouter(appRouter: appRouter, carStorage: carStorage)
         let driverRouter = DriverRouter(appRouter: appRouter, driverStorage: driverStorage)
-        let brandRouter = BrandRouter(appRouter: appRouter)
-        carRouter.brandRouter = brandRouter
         
         carRouter.showCarsList(.Cars)
         driverRouter.showDriversList(.Drivers)
