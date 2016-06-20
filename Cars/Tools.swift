@@ -21,6 +21,11 @@ extension UIViewController {
         view.addSubview(childView)
     }
     
+    func navBarRightButton(title: String, callback: Void -> Void) {
+        let button = UIBarButtonItem(title: title, callback: callback)
+        navigationItem.rightBarButtonItem = button
+    }
+    
 }
 
 extension UIControl {

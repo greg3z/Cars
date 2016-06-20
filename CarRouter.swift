@@ -45,7 +45,7 @@ final class CarRouter {
         carStorage.addListener {
             carsListController.cars = Array(self.carStorage.elements!)
         }
-        carsListController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add") {
+        carsListController.navBarRightButton("Add") {
             self.showAddCar()
         }
         appRouter.showNext(carsListController, tab: tab)
@@ -53,7 +53,7 @@ final class CarRouter {
 
     func showCarDetails(car: Car, tab: AppRouter.Tab) {
         let carDetailsController = CarDetailsController(car: car)
-        carDetailsController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit") {
+        carDetailsController.navBarRightButton("Edit") {
             self.showEditCar(car)
         }
         carDetailsController.imageCallback = {
@@ -67,7 +67,7 @@ final class CarRouter {
     
     func showCarDrivers(car: Car, tab: AppRouter.Tab) {
         let carDriversController = CarDriversController(car: car)
-        carDriversController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit") {
+        carDriversController.navBarRightButton("Edit") {
             self.showEditCar(car)
         }
         carDriversController.driverTouched = {
@@ -98,7 +98,7 @@ final class CarRouter {
 
     func showAddCar() {
         let carFormController = CarFormController(car: carStorage.getEmptyElement())
-        carFormController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save") {
+        carFormController.navBarRightButton("Save") {
             let car = carFormController.car
             self.carStorage.setElement(car)
             carFormController.dismissViewControllerAnimated(true, completion: nil)
@@ -108,7 +108,7 @@ final class CarRouter {
 
     func showEditCar(car: Car) {
         let carFormController = CarFormController(car: car)
-        carFormController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save") {
+        carFormController.navBarRightButton("Save") {
             let car = carFormController.car
             self.carStorage.setElement(car)
             carFormController.dismissViewControllerAnimated(true, completion: nil)
