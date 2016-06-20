@@ -22,6 +22,15 @@
 		136AFE671D0CD14C002411BF /* DeletableCarsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136AFE661D0CD14C002411BF /* DeletableCarsListController.swift */; };
 		136AFE6C1D0DB6B2002411BF /* DriverDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136AFE6B1D0DB6B2002411BF /* DriverDetailsController.swift */; };
 		136AFE6E1D0DBA6F002411BF /* DriverFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136AFE6D1D0DBA6F002411BF /* DriverFormController.swift */; };
+		139B366D1D188BA3006EBBA7 /* 911.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 139B36641D188BA3006EBBA7 /* 911.jpg */; };
+		139B366E1D188BA3006EBBA7 /* Aventador.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 139B36651D188BA3006EBBA7 /* Aventador.jpg */; };
+		139B366F1D188BA3006EBBA7 /* California.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 139B36661D188BA3006EBBA7 /* California.jpg */; };
+		139B36701D188BA3006EBBA7 /* Cayman.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 139B36671D188BA3006EBBA7 /* Cayman.jpg */; };
+		139B36711D188BA3006EBBA7 /* GranTurismo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 139B36681D188BA3006EBBA7 /* GranTurismo.jpg */; };
+		139B36721D188BA3006EBBA7 /* GT.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 139B36691D188BA3006EBBA7 /* GT.jpg */; };
+		139B36731D188BA3006EBBA7 /* Huracan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 139B366A1D188BA3006EBBA7 /* Huracan.jpg */; };
+		139B36741D188BA3006EBBA7 /* M4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 139B366B1D188BA3006EBBA7 /* M4.jpg */; };
+		139B36751D188BA3006EBBA7 /* R8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 139B366C1D188BA3006EBBA7 /* R8.jpg */; };
 		13C83C4A1D002F4000E2C80F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C83C491D002F4000E2C80F /* AppDelegate.swift */; };
 		13C83C4C1D002F4000E2C80F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C83C4B1D002F4000E2C80F /* ViewController.swift */; };
 		13C83C4F1D002F4000E2C80F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13C83C4D1D002F4000E2C80F /* Main.storyboard */; };
@@ -54,6 +63,15 @@
 		136AFE661D0CD14C002411BF /* DeletableCarsListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeletableCarsListController.swift; sourceTree = "<group>"; };
 		136AFE6B1D0DB6B2002411BF /* DriverDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverDetailsController.swift; sourceTree = "<group>"; };
 		136AFE6D1D0DBA6F002411BF /* DriverFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverFormController.swift; sourceTree = "<group>"; };
+		139B36641D188BA3006EBBA7 /* 911.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 911.jpg; sourceTree = "<group>"; };
+		139B36651D188BA3006EBBA7 /* Aventador.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Aventador.jpg; sourceTree = "<group>"; };
+		139B36661D188BA3006EBBA7 /* California.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = California.jpg; sourceTree = "<group>"; };
+		139B36671D188BA3006EBBA7 /* Cayman.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Cayman.jpg; sourceTree = "<group>"; };
+		139B36681D188BA3006EBBA7 /* GranTurismo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GranTurismo.jpg; sourceTree = "<group>"; };
+		139B36691D188BA3006EBBA7 /* GT.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GT.jpg; sourceTree = "<group>"; };
+		139B366A1D188BA3006EBBA7 /* Huracan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Huracan.jpg; sourceTree = "<group>"; };
+		139B366B1D188BA3006EBBA7 /* M4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = M4.jpg; sourceTree = "<group>"; };
+		139B366C1D188BA3006EBBA7 /* R8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = R8.jpg; sourceTree = "<group>"; };
 		13C83C461D002F4000E2C80F /* Cars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13C83C491D002F4000E2C80F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13C83C4B1D002F4000E2C80F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +144,22 @@
 			name = Driver;
 			sourceTree = "<group>";
 		};
+		139B36631D188B8C006EBBA7 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				139B36641D188BA3006EBBA7 /* 911.jpg */,
+				139B36651D188BA3006EBBA7 /* Aventador.jpg */,
+				139B36661D188BA3006EBBA7 /* California.jpg */,
+				139B36671D188BA3006EBBA7 /* Cayman.jpg */,
+				139B36681D188BA3006EBBA7 /* GranTurismo.jpg */,
+				139B36691D188BA3006EBBA7 /* GT.jpg */,
+				139B366A1D188BA3006EBBA7 /* Huracan.jpg */,
+				139B366B1D188BA3006EBBA7 /* M4.jpg */,
+				139B366C1D188BA3006EBBA7 /* R8.jpg */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
 		13C83C3D1D002F3F00E2C80F = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +170,7 @@
 				13C83C5B1D002F8700E2C80F /* Models */,
 				13C83C641D005AE000E2C80F /* Views */,
 				13C83C651D005AEA00E2C80F /* Controllers */,
+				139B36631D188B8C006EBBA7 /* Assets */,
 				13C83C481D002F4000E2C80F /* Cars */,
 				13C83C471D002F4000E2C80F /* Products */,
 			);
@@ -252,9 +287,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				139B36751D188BA3006EBBA7 /* R8.jpg in Resources */,
+				139B36721D188BA3006EBBA7 /* GT.jpg in Resources */,
 				13C83C541D002F4000E2C80F /* LaunchScreen.storyboard in Resources */,
+				139B366D1D188BA3006EBBA7 /* 911.jpg in Resources */,
+				139B36701D188BA3006EBBA7 /* Cayman.jpg in Resources */,
 				13C83C511D002F4000E2C80F /* Assets.xcassets in Resources */,
+				139B36731D188BA3006EBBA7 /* Huracan.jpg in Resources */,
 				135E2CE11D05989F009CF455 /* cocoapods.png in Resources */,
+				139B366E1D188BA3006EBBA7 /* Aventador.jpg in Resources */,
+				139B366F1D188BA3006EBBA7 /* California.jpg in Resources */,
+				139B36711D188BA3006EBBA7 /* GranTurismo.jpg in Resources */,
+				139B36741D188BA3006EBBA7 /* M4.jpg in Resources */,
 				13C83C4F1D002F4000E2C80F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
