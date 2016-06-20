@@ -25,7 +25,7 @@ final class DriverDetailsController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .whiteColor()
         let detailsView = DetailsView()
-        detailsView.setData(UIImage(named: "cocoapods"), string1: nil, buttonTitle: nil, string2: "Name", string21: driver.name, string3: nil, string31: nil)
+        detailsView.setData(UIImage(named: "cocoapods"), string1: "Name", string11: driver.name)
         addChildView(detailsView, frame: CGRect(x: 0, y: 64, width: view.frame.width, height: view.frame.height - 64))
     }
     

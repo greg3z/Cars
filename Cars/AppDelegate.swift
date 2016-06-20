@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let driverRouter = DriverRouter(appRouter: appRouter, driverStorage: driverStorage)
         
         carRouter.showCarsList(.Cars)
+//        carRouter.showCarDetails("111", tab: .Cars)
         driverRouter.showDriversList(.Drivers)
         
         return true

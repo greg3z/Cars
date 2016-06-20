@@ -35,7 +35,10 @@ final class CarDriversController: UIViewController {
         let label = UILabel()
         label.text = "Drivers"
         label.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
-        addChildView(label, frame: CGRect(x: 0, y: halfHeight, width: view.frame.width, height: labelHeight))
+        let marginView = UIView()
+        marginView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+        addChildView(marginView, frame: CGRect(x: 0, y: halfHeight, width: 15, height: labelHeight))
+        addChildView(label, frame: CGRect(x: 15, y: halfHeight, width: view.frame.width - 15, height: labelHeight))
     }
     
 }
