@@ -10,27 +10,27 @@ typealias Callback = Void -> Void
 
 protocol Storage {
     
-    associatedtype T: Hashable
+    associatedtype Element: Hashable
     
-    var elements: Set<T>? { get set }
+    var elements: Set<Element>? { get set }
     var listeners: [Callback] { get set }
     
-    func getElements(callback: Set<T> -> Void)
-    func getEmptyElement() -> T
-    mutating func setElement(element: T)
-    mutating func deleteElement(element: T)
+    func getElements(callback: Set<Element> -> Void)
+    func getEmptyElement() -> Element
+    mutating func setElement(element: Element)
+    mutating func deleteElement(element: Element)
     mutating func addListener(callback: Callback)
     
 }
 
 extension Storage {
     
-    mutating func setElement(element: T) {
+    mutating func setElement(element: Element) {
         elements?.insert(element)
         elementsChanged()
     }
     
-    mutating func deleteElement(element: T) {
+    mutating func deleteElement(element: Element) {
         elements?.remove(element)
         elementsChanged()
     }

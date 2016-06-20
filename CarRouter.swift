@@ -31,9 +31,6 @@ final class CarRouter {
             car in
             self.showCarDrivers(car, tab: tab)
         }
-        carsListController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add") {
-            self.showAddCar()
-        }
         carsListController.imageCallback = {
             car, callback in
             if let image = car.image {
@@ -47,6 +44,9 @@ final class CarRouter {
         }
         carStorage.addListener {
             carsListController.cars = Array(self.carStorage.elements!)
+        }
+        carsListController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add") {
+            self.showAddCar()
         }
         appRouter.showNext(carsListController, tab: tab)
     }
