@@ -36,6 +36,7 @@ final class DetailsView: UIStackView {
         addArrangedSubview(imageView)
         addArrangedSubview(stackView1)
         addArrangedSubview(stackView2)
+        addArrangedSubview(UIView())
     }
     
     required init?(coder aDecoder: NSCoder) {

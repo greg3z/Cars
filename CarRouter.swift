@@ -31,14 +31,6 @@ final class CarRouter {
             car in
             self.showCarDrivers(car, tab: tab)
         }
-        carsListController.imageCallback = {
-            car, callback in
-            if let image = car.image {
-                let task = ImageLoader(url: image, callback: callback)
-                return task
-            }
-            return nil
-        }
         carsListController.deleteCar = {
             self.carStorage.deleteElement($0)
         }
@@ -56,12 +48,6 @@ final class CarRouter {
         carDetailsController.navBarRightButton("Edit") {
             self.showEditCar(car)
         }
-        carDetailsController.imageCallback = {
-            car, callback in
-            if let image = car.image {
-                let _ = ImageLoader(url: image, callback: callback)
-            }
-        }
         appRouter.showNext(carDetailsController, tab: tab)
     }
     
@@ -73,12 +59,6 @@ final class CarRouter {
         carDriversController.driverTouched = {
             driver in
             
-        }
-        carDriversController.imageCallback = {
-            car, callback in
-            if let image = car.image {
-                let _ = ImageLoader(url: image, size: 400, callback: callback)
-            }
         }
         appRouter.showNext(carDriversController, tab: tab)
     }
