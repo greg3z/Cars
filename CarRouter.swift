@@ -29,7 +29,7 @@ final class CarRouter {
         let carsListController = DeletableCarsListController(cars: cars)
         carsListController.carTouched = {
             car in
-            self.showCarDrivers(car, tab: tab)
+            self.showCarDetails(car, tab: tab)
         }
         carsListController.deleteCar = {
             self.carStorage.deleteElement($0)

@@ -35,16 +35,16 @@ final class CarsListController: UIViewController {
         carsListView = ListView(elements: cars)
         carsListView!.configureCell = {
             car, cell in
-            cell.imageView?.image = UIImage(named: "cocoapods")
+            guard let image = UIImage(named: car.image) else { return }
+            let width: CGFloat = 70
+            let height = image.size.height * width / image.size.width
+            UIGraphicsBeginImageContext(CGSizeMake(width, height))
+            image.drawInRect(CGRectMake(0, 0, width, height))
+            let newImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            cell.imageView?.image = newImage
             cell.textLabel?.numberOfLines = 0
             cell.textLabel?.text = car.model// + "\na\na\na\na\na"
-            let task = self.imageCallback?(car) {
-                image in
-                cell.imageView?.image = image
-            }
-            if let task = task {
-                self.carsListView!.asyncTask(task, forCell: cell)
-            }
         }
         carsListView!.elementTouched = carTouched
         carsListView!.editActions = editActions
