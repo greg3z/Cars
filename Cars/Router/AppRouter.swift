@@ -28,7 +28,7 @@ final class AppRouter {
         tabbarController.setViewControllers([carsNavigationController, driversNavigationController], animated: true)
     }
     
-    func showNext(viewController: UIViewController, tab: Tab, animated: Bool = true) {
+    func showNext(viewController: UIViewController, tab: Tab, animated: Bool = true, frame: CGRect? = nil) {
         let navigationController: UINavigationController
         switch tab {
             case .Cars: navigationController = carsNavigationController
@@ -45,21 +45,28 @@ final class AppRouter {
                 navigationController.popViewControllerAnimated(false)
             }
         }
-        navigationController.pushViewController(viewController, animated: animated)
+        let adjustedViewController = getAdjustedViewController(viewController, frame: frame)
+        navigationController.pushViewController(adjustedViewController, animated: animated)
     }
     
     func showModal(viewController: UIViewController, frame: CGRect? = nil) {
-        var adjustedViewController = viewController
-        if let frame = frame {
-            adjustedViewController = UIViewController()
-            adjustedViewController.view.backgroundColor = .whiteColor()
-            adjustedViewController.addChildView(viewController, frame: frame)
-        }
+        let adjustedViewController = getAdjustedViewController(viewController, frame: frame)
         let navController = UINavigationController(rootViewController: adjustedViewController)
         adjustedViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel") {
             navController.dismissViewControllerAnimated(true, completion: nil)
         }
         tabbarController.presentViewController(navController, animated: true, completion: nil)
+    }
+    
+    func getAdjustedViewController(viewController: UIViewController, frame: CGRect? = nil) -> UIViewController {
+        var adjustedViewController = viewController
+        if let frame = frame {
+            adjustedViewController = UIViewController()
+            adjustedViewController.navigationItem.rightBarButtonItem = viewController.navigationItem.rightBarButtonItem
+            adjustedViewController.view.backgroundColor = .whiteColor()
+            adjustedViewController.addChildView(viewController, frame: frame)
+        }
+        return adjustedViewController
     }
     
     func showLoading(tab: Tab) {

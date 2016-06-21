@@ -18,7 +18,7 @@ final class CarStorage: Storage {
             elements = _cars
         }
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-            usleep(500000)
+//            usleep(500000)
             dispatch_async(dispatch_get_main_queue()) {
                 callback(self.elements!)
             }

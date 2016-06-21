@@ -48,7 +48,10 @@ final class CarRouter {
         carDetailsController.navBarRightButton("Edit") {
             self.showEditCar(car)
         }
-        appRouter.showNext(carDetailsController, tab: tab)
+        let padding: CGFloat = 15
+        let formHeight: CGFloat = 100
+        let width = appRouter.carsNavigationController.view.frame.width
+        appRouter.showNext(carDetailsController, tab: tab, frame: CGRect(x: padding, y: 70, width: width - 2 * padding, height: formHeight))
     }
     
     func showCarDrivers(car: Car, tab: AppRouter.Tab) {

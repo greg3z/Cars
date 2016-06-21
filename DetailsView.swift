@@ -23,12 +23,6 @@ final class DetailsView: UIStackView {
         let stackView2 = UIStackView(arrangedSubviews: [label2, label21])
         stackView1.spacing = spacing
         stackView2.spacing = spacing
-        stackView1.layoutMarginsRelativeArrangement = true
-        stackView1.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: spacing)
-        stackView2.layoutMarginsRelativeArrangement = true
-        stackView2.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: spacing)
-        layoutMarginsRelativeArrangement = true
-        layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: spacing, right: 0)
         self.spacing = spacing
         axis = .Vertical
         label11.textAlignment = .Right
@@ -36,7 +30,6 @@ final class DetailsView: UIStackView {
         addArrangedSubview(imageView)
         addArrangedSubview(stackView1)
         addArrangedSubview(stackView2)
-        addArrangedSubview(UIView())
     }
     
     required init?(coder aDecoder: NSCoder) {
