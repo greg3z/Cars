@@ -26,7 +26,7 @@ final class DriverFormController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .whiteColor()
         formView = FormView()
-        formView?.setData(nil, button1String: nil, label2String: "Name", textField2String: driver.name, label3String: nil, textField3String: nil)
+        formView?.setData("Name", textField1String: driver.name)
         formView?.textField1Changed = {
             self.driver = Driver(id: self.driver.id, name: $0, cars: self.driver.cars)
         }

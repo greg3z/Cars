@@ -26,7 +26,7 @@ final class CarFormController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .whiteColor()
         formView = FormView()
-        formView?.setData("Brand", button1String: car.brand, label2String: "Model", textField2String: car.model)
+        formView?.setData("Brand", textField1String: car.brand, label2String: "Model", textField2String: car.model)
         formView?.textField1Changed = {
             self.car = Car(id: self.car.id, brand: self.car.brand, model: $0, image: self.car.image, drivers: self.car.drivers)
         }

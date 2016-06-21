@@ -83,7 +83,10 @@ final class CarRouter {
             self.carStorage.setElement(car)
             carFormController.dismissViewControllerAnimated(true, completion: nil)
         }
-        appRouter.showModal(carFormController)
+        let padding: CGFloat = 15
+        let formHeight: CGFloat = 100
+        let width = appRouter.carsNavigationController.view.frame.width
+        appRouter.showModal(carFormController, frame: CGRect(x: padding, y: 70, width: width - 2 * padding, height: formHeight))
     }
 
     func showEditCar(car: Car) {

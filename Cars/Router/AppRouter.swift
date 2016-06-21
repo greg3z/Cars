@@ -31,8 +31,8 @@ final class AppRouter {
     func showNext(viewController: UIViewController, tab: Tab, animated: Bool = true) {
         let navigationController: UINavigationController
         switch tab {
-        case .Cars: navigationController = carsNavigationController
-        case .Drivers: navigationController = driversNavigationController
+            case .Cars: navigationController = carsNavigationController
+            case .Drivers: navigationController = driversNavigationController
         }
         var animated = animated
         if loadingScreen[tab]! {
@@ -48,9 +48,15 @@ final class AppRouter {
         navigationController.pushViewController(viewController, animated: animated)
     }
     
-    func showModal(viewController: UIViewController) {
-        let navController = UINavigationController(rootViewController: viewController)
-        viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel") {
+    func showModal(viewController: UIViewController, frame: CGRect? = nil) {
+        var adjustedViewController = viewController
+        if let frame = frame {
+            adjustedViewController = UIViewController()
+            adjustedViewController.view.backgroundColor = .whiteColor()
+            adjustedViewController.addChildView(viewController, frame: frame)
+        }
+        let navController = UINavigationController(rootViewController: adjustedViewController)
+        adjustedViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel") {
             navController.dismissViewControllerAnimated(true, completion: nil)
         }
         tabbarController.presentViewController(navController, animated: true, completion: nil)

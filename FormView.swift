@@ -12,11 +12,8 @@ final class FormView: UIStackView, UITextFieldDelegate {
     
     let label1 = UILabel()
     let label2 = UILabel()
-    let label3 = UILabel()
-    let button1 = UIButton(type: .System)
+    let textField1 = UITextField()
     let textField2 = UITextField()
-    let textField3 = UITextField()
-    var buttonTouched: (Void -> Void)?
     var textField1Changed: (String -> Void)?
     var textField2Changed: (String -> Void)?
     
@@ -24,30 +21,28 @@ final class FormView: UIStackView, UITextFieldDelegate {
         super.init(frame: .zero)
         axis = .Vertical
         distribution = .FillEqually
-        let stackView1 = UIStackView(arrangedSubviews: [label1, button1])
+        spacing = 10
+        let stackView1 = UIStackView(arrangedSubviews: [label1, textField1])
         let stackView2 = UIStackView(arrangedSubviews: [label2, textField2])
-        let stackView3 = UIStackView(arrangedSubviews: [label3, textField3])
+        stackView1.distribution = .FillEqually
+        stackView2.distribution = .FillEqually
         addArrangedSubview(stackView1)
         addArrangedSubview(stackView2)
-        addArrangedSubview(stackView3)
-        button1.addActionForEvents(.TouchUpInside) {
-            self.buttonTouched?()
-        }
+        textField1.borderStyle = .RoundedRect
+        textField2.borderStyle = .RoundedRect
+        textField1.delegate = self
         textField2.delegate = self
-        textField3.delegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setData(label1String: String? = nil, button1String: String? = nil, label2String: String? = nil, textField2String: String? = nil, label3String: String? = nil, textField3String: String? = nil) {
+    func setData(label1String: String? = nil, label2String: String? = nil, textField1String: String? = nil, textField2String: String? = nil) {
         label1.text = label1String
-        button1.setTitle(button1String, forState: .Normal)
         label2.text = label2String
+        textField1.text = textField1String
         textField2.text = textField2String
-        label3.text = label3String
-        textField3.text = textField3String
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
